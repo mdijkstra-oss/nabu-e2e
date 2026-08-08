@@ -1,0 +1,6 @@
+endpoint: /precedence
+contains:
+  - ALPHA
+  - BETA
+reply:
+  text: superset fixture answered

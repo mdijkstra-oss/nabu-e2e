@@ -1,0 +1,8 @@
+# Two contains: the transcript echoes the boot greeting turn, so a chat-turn
+# fixture must out-specify boot-greeting.yaml to win the match.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-SKELETON-MARKER
+reply:
+  text: "Marker received. SKELETON-REPLY-OK."

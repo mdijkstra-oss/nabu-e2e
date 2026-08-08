@@ -1,0 +1,4 @@
+endpoint: /rotation
+replies:
+  - text: first reply
+  - text: second reply

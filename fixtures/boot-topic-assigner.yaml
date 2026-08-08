@@ -1,0 +1,7 @@
+# Standing boot fixture: every project boot classifies each seeded file.
+# No contains: answers every /topic-assigner request.
+endpoint: /topic-assigner
+reply:
+  json:
+    type: interview
+    subject: remote work

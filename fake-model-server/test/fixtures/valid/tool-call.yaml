@@ -1,0 +1,12 @@
+endpoint: /tool-caller
+contains: MARKER-TOOL
+reply:
+  text: "Let me run that query."
+  toolCalls:
+    - name: query
+      args:
+        sql: select 1
+      callId: call-fixed-1
+    - name: annotate
+      args:
+        note: second call

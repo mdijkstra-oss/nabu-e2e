@@ -1,0 +1,14 @@
+{
+  "name": "nabu-e2e-fake-model-server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"test/*.test.js\""
+  },
+  "dependencies": {
+    "yaml": "^2.8.0"
+  },
+  "devDependencies": {
+    "openai": "^5.0.0"
+  }
+}

@@ -1,0 +1,4 @@
+endpoint: /qual-coder
+contains: MARKER-SKELETON
+reply:
+  text: "Skeleton marker reply from the fixture."

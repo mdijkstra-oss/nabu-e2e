@@ -1,0 +1,4 @@
+endpoint: /tie
+contains: TIE-MARKER
+reply:
+  text: tie b

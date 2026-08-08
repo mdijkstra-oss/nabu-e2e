@@ -1,0 +1,5 @@
+endpoint: /error-stream
+reply:
+  error:
+    message: safety filter tripped
+    type: SAFETY

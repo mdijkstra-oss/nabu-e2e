@@ -1,0 +1,6 @@
+# Standing boot fixture: opening a project fires one auto-generated greeting
+# turn at /qual-coder, marked by this system message.
+endpoint: /qual-coder
+contains: "GREETING MODE"
+reply:
+  text: "Welcome back. Ready when you are."

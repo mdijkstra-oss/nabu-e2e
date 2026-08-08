@@ -1,0 +1,4 @@
+endpoint: /x
+reply:
+  text: hi
+bogus: 1

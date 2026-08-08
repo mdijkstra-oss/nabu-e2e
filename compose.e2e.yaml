@@ -1,0 +1,51 @@
+# Override merged over nabu-self-hosted/compose.yaml by the e2e harness.
+# Requires compose 2.24.4+ for the !reset/!override merge tags.
+
+services:
+  frontend:
+    build:
+      args:
+        VITE_E2E: "true"
+
+  # The fake fills this slot and answers as both DNS names: the proxy's
+  # /llm route targets chancery:8081, /embeddings targets embeddings:8082.
+  embeddings:
+    # !override: the base slot's build carries a dockerfile_inline (the caddy
+    # relay); a map merge would keep it and the slot would silently run the
+    # relay instead of the fake.
+    build: !override
+      context: ${NABU_E2E_FAKE_CONTEXT:?set by the harness}
+    networks:
+      default:
+        aliases:
+          - chancery
+    volumes:
+      - ${NABU_E2E_FIXTURES:?set by the harness}:/fixtures:ro
+
+  # Both stand-ins must still complete successfully: every long-running
+  # service gates on preflight, and preflight gates on prompts-seed.
+  # Resetting preflight's build also prevents the dragoman image build its
+  # additional_contexts would otherwise force.
+  preflight:
+    build: !reset null
+    image: alpine:3
+    entrypoint: ["true"]
+
+  prompts-seed:
+    build: !reset null
+    image: alpine:3
+    entrypoint: ["true"]
+
+  # Parked, never activated: an override cannot delete a service, and exit-0
+  # stand-ins would restart forever under restart: unless-stopped.
+  chancery:
+    profiles: ["parked"]
+
+  dragoman:
+    profiles: ["parked"]
+
+  welcome-seed:
+    environment:
+      SEED_DIR: /seed-data
+    volumes:
+      - ${NABU_E2E_BASE_PROJECT:?set by the harness}:/seed-data:ro

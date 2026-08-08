@@ -1,0 +1,5 @@
+endpoint: /json-reply
+reply:
+  json:
+    verdict: pass
+    score: 3

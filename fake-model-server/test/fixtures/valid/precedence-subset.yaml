@@ -1,0 +1,4 @@
+endpoint: /precedence
+contains: ALPHA
+reply:
+  text: subset fixture answered

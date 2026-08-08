@@ -1,0 +1,6 @@
+endpoint: /holder
+contains: MARKER-HOLD
+reply:
+  text: "This stream never finishes on its own."
+  interEventMs: 40
+  hold: true

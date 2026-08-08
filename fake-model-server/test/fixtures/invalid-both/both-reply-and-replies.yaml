@@ -1,0 +1,5 @@
+endpoint: /x
+reply:
+  text: hi
+replies:
+  - text: ho

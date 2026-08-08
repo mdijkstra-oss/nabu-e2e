@@ -1,0 +1,6 @@
+endpoint: /error-status
+reply:
+  error:
+    message: quota exhausted
+    type: rate_limited
+    status: 429
