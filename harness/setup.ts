@@ -18,9 +18,9 @@ const fetchOk = async (url: string): Promise<Response | null> => {
   }
 }
 
-// Three conditions, in order: port up, app shell served, storage serving
-// with the seeded project listed — the last is what nothing inside the
-// stack gates on, so the harness is the only thing that waits for it.
+// Three conditions, in order: port up, app shell served, storage answering
+// through its own route. Storage starts empty; each test creates the project
+// it needs.
 const waitForReady = async (base: string): Promise<void> => {
   const deadline = Date.now() + READY_TIMEOUT_MS
   let stage = "GET /health"
@@ -28,12 +28,8 @@ const waitForReady = async (base: string): Promise<void> => {
     if (await fetchOk(`${base}/health`)) {
       stage = "GET /"
       if (await fetchOk(`${base}/`)) {
-        stage = "GET /api/queries/projects listing at least one project"
-        const res = await fetchOk(`${base}/api/queries/projects`)
-        if (res) {
-          const body = (await res.json()) as { items?: unknown[] }
-          if (Array.isArray(body.items) && body.items.length > 0) return
-        }
+        stage = "GET /api/queries/projects"
+        if (await fetchOk(`${base}/api/queries/projects`)) return
       }
     }
     await sleep(POLL_INTERVAL_MS)

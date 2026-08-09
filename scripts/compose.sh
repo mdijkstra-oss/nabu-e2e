@@ -11,7 +11,6 @@ export NABU_FRONTEND_REPO="$NABU_ROOT/nabu-frontend"
 export NABU_STORAGE_REPO="$NABU_ROOT/nabu-storage"
 export NABU_E2E_FAKE_CONTEXT="$E2E_ROOT/fake-model-server"
 export NABU_E2E_FIXTURES="$E2E_ROOT/fixtures"
-export NABU_E2E_BASE_PROJECT="$E2E_ROOT/base-project"
 
 exec docker compose -p nabu-e2e \
   -f "$NABU_ROOT/nabu-self-hosted/compose.yaml" \

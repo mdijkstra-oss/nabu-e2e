@@ -43,9 +43,3 @@ services:
 
   dragoman:
     profiles: ["parked"]
-
-  welcome-seed:
-    environment:
-      SEED_DIR: /seed-data
-    volumes:
-      - ${NABU_E2E_BASE_PROJECT:?set by the harness}:/seed-data:ro

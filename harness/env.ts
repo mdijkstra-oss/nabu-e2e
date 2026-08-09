@@ -37,7 +37,6 @@ export const composeEnv = (mode: Mode): Record<string, string> => {
   if (mode === "override") {
     env.NABU_E2E_FAKE_CONTEXT = path.join(e2eRoot, "fake-model-server")
     env.NABU_E2E_FIXTURES = path.join(e2eRoot, "fixtures")
-    env.NABU_E2E_BASE_PROJECT = path.join(e2eRoot, "base-project")
   } else {
     env.NABU_EMBEDDINGS_REPO = process.env.NABU_EMBEDDINGS_REPO || path.join(nabuRoot, "nabu-embeddings")
     env.NABU_PROMPTS_REPO = process.env.NABU_PROMPTS_REPO || path.join(nabuRoot, "nabu-prompts")
