@@ -78,7 +78,7 @@ test(
 )
 
 test(
-  "a filename that resolves to nothing is left exactly as written and never linked",
+  "a filename that resolves to nothing keeps its text as written, never links, and is styled as missing",
   { tag: ["@G2"] },
   async ({ page, project }) => {
     await project.open(page)
@@ -87,7 +87,9 @@ test(
     const body = await awaitReply(page, "G2-FILE-REPLY-END")
 
     await expect(body.locator("a")).toHaveCount(0)
-    await expect(body).toContainText("ghost-diary.md")
+    const missing = body.locator("[data-missing-ref]")
+    await expect(missing).toHaveText("ghost-diary.md")
+    await expect(missing).toHaveClass(/decoration-dashed/)
   }
 )
 

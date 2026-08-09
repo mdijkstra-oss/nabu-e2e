@@ -1,14 +1,10 @@
-import type { Page } from "@playwright/test"
 import { test, expect, nabuQuery, type JournalEntry } from "../helpers/fixtures"
 import { waitForChunks, entriesFor, stringifyBody } from "../helpers/search"
+import { sendChat } from "../helpers/chat"
 
 // SEMANTIC()/EMBEDDINGS_FROM_FILE() are resolved by the app's SQL layer, which
 // the model's `query` tool fronts; the tool's function_call_output in the next
 // /qual-coder request carries the resolved rows.
-const sendChat = async (page: Page, message: string): Promise<void> => {
-  await page.locator('textarea[name="chat-message"]').fill(message)
-  await page.keyboard.press("Enter")
-}
 
 interface Row {
   file: string

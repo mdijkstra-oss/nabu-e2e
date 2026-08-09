@@ -36,11 +36,7 @@ export const requestText = (entry: JournalEntry): string => {
 
 export const countMatches = (text: string, re: RegExp): number => (text.match(re) ?? []).length
 
-export const sendChat = async (page: Page, message: string): Promise<void> => {
-  const box = page.locator('textarea[name="chat-message"]')
-  await box.fill(message)
-  await page.keyboard.press("Enter")
-}
+export { sendChat } from "./chat"
 
 // The find step reads chunk hashes and languages from the in-browser files
 // table; a run fired before the embeddings sync lands finds no candidates.

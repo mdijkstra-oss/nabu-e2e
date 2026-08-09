@@ -1,0 +1,6 @@
+# Follow-up turn for e-e2-edit.yaml — the echoed edit_file arguments carry the
+# rewritten paragraph, so its marker separates this request from the first.
+endpoint: /qual-coder
+contains: ["GREETING MODE", "E2E-E2-EDIT-TURN", "E2E-E2-MID-EDIT!"]
+reply:
+  text: "E2-EDIT-DONE"

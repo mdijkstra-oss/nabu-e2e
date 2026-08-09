@@ -1,12 +1,7 @@
 import { expect, type Page } from "@playwright/test"
 import type { JournalEntry, ProjectHandle } from "./fixtures"
 
-export const sendChat = async (page: Page, text: string): Promise<void> => {
-  const box = page.locator('textarea[name="chat-message"]')
-  await box.click()
-  await box.fill(text)
-  await page.keyboard.press("Enter")
-}
+export { sendChat } from "./chat"
 
 /** The single icon button in the chat input row (send/cancel/skip, mode-dependent). */
 export const chatButton = (page: Page) =>

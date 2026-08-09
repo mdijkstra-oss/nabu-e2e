@@ -78,7 +78,7 @@ const capSentence = (i: number): string =>
   `The E2ES9KW capdoc sentence ${i} notes the survey of the garden beds in row ${i} without incident today.`
 
 test(
-  "every stage after probe can be turned off individually — the per-file cap has no runtime toggle",
+  "every stage after probe can be turned off individually, the per-file cap included",
   { tag: ["@S9"] },
   async ({ page, project }) => {
     const sentences: string[] = []
@@ -96,12 +96,11 @@ test(
         },
       ])
     )
-    // Every stage that offers a runtime switch is off. If each stage after
-    // probe were individually disableable, some configuration would show the
-    // full fused candidate set; the per-file cap has no switch, so it cannot.
+    // With every stage after probe off, the raw fused candidate set surfaces.
     await presetDebugOptions(page, {
       skipMerge: true,
       skipFilter: true,
+      skipCap: true,
       skipTrim: true,
       skipAnnotationExtend: true,
       skipBarrenCheck: true,
@@ -118,8 +117,6 @@ test(
 
     await gotoSearch(page, project, "search-e2es9cap")
     await expect(hitLocator(page).first()).toBeVisible({ timeout: 30_000 })
-    // Claimed: raw fused candidates — all chunks of the file. The cap stage
-    // still runs (max(10, half the file's chunks)) and cannot be turned off.
     await expect(hitLocator(page)).toHaveCount(totalChunks)
   }
 )

@@ -99,7 +99,7 @@ test("plan mode carries no mutating tools; submit_plan switches to exec", { tag:
   expect(execReq!.seq).toBeGreaterThan(planReq!.seq)
 })
 
-test("exec mode has everything chat has plus complete_step", { tag: ["@L4"] }, async ({ page, project }) => {
+test("exec mode has everything chat has except start_planning, plus complete_step", { tag: ["@L4"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Please execute this E2E-L4A-TOOLS")
@@ -114,8 +114,10 @@ test("exec mode has everything chat has plus complete_step", { tag: ["@L4"] }, a
   const chatTools = toolNames(chatReq!)
   const execTools = toolNames(execReq!)
   expect(execTools).toContain("complete_step")
+  // Exec is already running a plan, so starting one is the single chat tool
+  // deliberately withheld there.
   const missingFromExec = chatTools.filter((t) => !execTools.includes(t))
-  expect(missingFromExec, "every chat tool should also be offered in exec").toEqual([])
+  expect(missingFromExec, "only start_planning is withheld in exec").toEqual(["start_planning"])
 })
 
 test("completing the last step retires the plan and falls back to chat", { tag: ["@L4"] }, async ({ page, project }) => {
@@ -183,7 +185,7 @@ test("dead entity ids reject the message and re-ask the model", { tag: ["@L6"] }
   expect(reask).toContain("DO NOT restate")
 })
 
-test("rejections cap at three, then the answer is let through", { tag: ["@L6"] }, async ({ page, project }) => {
+test("rejections cap at three, then the answer is let through and flagged", { tag: ["@L6"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Summarize E2E-L6-CAP")
@@ -191,8 +193,10 @@ test("rejections cap at three, then the answer is let through", { tag: ["@L6"] }
   await page.waitForTimeout(2500)
   // Initial ask plus exactly three re-asks; the cap stops a fifth request.
   expect((await agentEntries(project, "E2E-L6-CAP")).length).toBe(4)
-  // After three consecutive rejections the next answer must be let through.
+  // After three consecutive rejections the next answer must be let through,
+  // visibly flagged so the user can judge it.
   await expect(page.getByText("L6-CAP-BAD-ANSWER")).toBeVisible({ timeout: 5_000 })
+  await expect(page.getByText("references entities that do not exist")).toBeVisible()
 })
 
 test("complete_step out of order is rejected against the derived plan state", { tag: ["@L7"] }, async ({ page, project }) => {

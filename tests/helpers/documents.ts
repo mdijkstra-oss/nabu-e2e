@@ -25,11 +25,7 @@ export const openDocument = async (
   await waitForBoot(page)
 }
 
-export const sendChat = async (page: Page, text: string): Promise<void> => {
-  const box = page.locator('textarea[name="chat-message"]')
-  await box.fill(text)
-  await box.press("Enter")
-}
+export { sendChat } from "./chat"
 
 export const waitForReply = (page: Page, marker: string): Promise<void> =>
   expect(page.getByText(marker)).toBeVisible({ timeout: 45_000 })

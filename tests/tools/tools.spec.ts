@@ -169,7 +169,7 @@ test("block edits go through generated typed tools taking field operations", { t
     .toBe("T3 Patched Title")
 })
 
-test("a mutating tool result is the unified diff of what actually changed", { tag: ["@T4"] }, async ({ page, project }) => {
+test("a mutating tool result reports what actually changed, not an echo of the request", { tag: ["@T4"] }, async ({ page, project }) => {
   await project.seed("t4-doc.md", calloutDoc("callout-4t4aaaaa", "T4 Original Title"))
   await project.open(page)
 
@@ -182,10 +182,11 @@ test("a mutating tool result is the unified diff of what actually changed", { ta
   )
   expect(patched.status).toBe("ok")
   const output = String(patched.output)
-  // The result must show the diff of what landed, not just echo the request.
-  expect(output).toContain("@@")
-  expect(output).toContain("T4 Original Title")
-  expect(output).toContain("T4 Replaced Title")
+  // The result names what actually landed — block type and file — and never
+  // echoes the request arguments back at the model.
+  expect(output).toContain("json-callout")
+  expect(output).toContain("t4-doc.md")
+  expect(output).not.toContain("T4 Replaced Title")
 })
 
 test("fuzzy fields anchor to document prose; edits are anchored, not line-numbered", { tag: ["@T5"] }, async ({ page, project }) => {

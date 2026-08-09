@@ -1,0 +1,6 @@
+# Follow-up turn for e-e3-edit.yaml — the echoed edit_file arguments carry the
+# round marker, so its presence separates this request from the first.
+endpoint: /qual-coder
+contains: ["GREETING MODE", "E2E-E3-EDIT-TURN", "E2E-E3-ROUND-MARKER"]
+reply:
+  text: "E3-EDIT-DONE"

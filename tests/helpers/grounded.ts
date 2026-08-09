@@ -70,11 +70,7 @@ export const VENDING_SENTENCE = "The vending machine only accepted exact change 
 
 export const OTHER_NOTES_DOC = ["# Other notes", "", VENDING_SENTENCE, ""].join("\n")
 
-export const sendChat = async (page: Page, text: string): Promise<void> => {
-  const box = page.locator('textarea[name="chat-message"]')
-  await box.fill(text)
-  await box.press("Enter")
-}
+export { sendChat } from "./chat"
 
 /** Wait for the scripted reply to stream in, and return its message body. */
 export const awaitReply = async (page: Page, sentinel: string): Promise<Locator> => {

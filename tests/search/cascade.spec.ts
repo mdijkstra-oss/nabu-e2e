@@ -9,6 +9,7 @@ import {
   stringifyBody,
   countOccurrences,
 } from "../helpers/search"
+import { sendChat } from "../helpers/chat"
 
 const capSentence = (i: number): string =>
   `The E2ES4KW E2ES4CAPDOC record ${i} lists what the team changed about routine ${i} that week.`
@@ -128,8 +129,7 @@ test(
     await project.open(page)
     await waitForChunks(page, ["s4-keep.md", "s4-drop.md"])
 
-    await page.locator('textarea[name="chat-message"]').fill("Please run the project search E2ES4RUN now.")
-    await page.keyboard.press("Enter")
+    await sendChat(page, "Please run the project search E2ES4RUN now.")
     await expect(page.getByText("E2ES4DONE")).toBeVisible({ timeout: 60_000 })
 
     const journal = await project.journal()

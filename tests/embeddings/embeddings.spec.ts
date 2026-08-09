@@ -10,12 +10,16 @@ import {
   readCompanion,
 } from "../helpers/embeddings"
 import { listVolumeDir } from "../../harness/volume"
+import { sendChat } from "../helpers/documents"
 
 const BASE_COMPANIONS = [
   "field-notes.embeddings.hidden.md",
   "interview-anna.embeddings.hidden.md",
   "interview-bram.embeddings.hidden.md",
 ]
+
+// One distinctive phrase per base-corpus file, to pin that none of them re-embed.
+const BASE_PHRASES = ["Recurring themes", "graphic designer", "support engineer"]
 
 // Chunk geometry (constants.ts): 1000-char windows, 800-char stride, sentence
 // snap within 300. The builders below place edits relative to those boundaries.
@@ -57,7 +61,13 @@ test(
 
     const editor = page.locator('[contenteditable="true"]').first()
     await expect(editor).toContainText("E2E-E1-HEAD-ANCHOR", { timeout: 30_000 })
-    await editor.click()
+    // Clicking past the last line makes the editor itself place the caret at
+    // the document end; the DOM-selection collapse alone is synced through a
+    // debounced observer (a page timer, frozen by page.clock), so the first
+    // typed key could otherwise land wherever a center click had put the caret.
+    const editorBox = await editor.boundingBox()
+    if (!editorBox) throw new Error("editor has no bounding box")
+    await editor.click({ position: { x: editorBox.width - 5, y: editorBox.height - 5 } })
     await page.evaluate(() => {
       const el = document.querySelector('[contenteditable="true"]')
       const sel = window.getSelection()
@@ -65,7 +75,13 @@ test(
       sel.selectAllChildren(el)
       sel.collapseToEnd()
     })
+    await page.waitForTimeout(150)
+    await page.clock.runFor(100)
     await page.keyboard.type(` The ${E1_TOKEN} coda adds E2E-E1-TAIL-EDIT! now.`)
+    // Fail fast if the caret raced: the coda must extend the tail sentence.
+    await expect(editor).toContainText(
+      `tail closes the document. The ${E1_TOKEN} coda adds E2E-E1-TAIL-EDIT! now.`
+    )
 
     const postEntries = await advanceUntil(page, async () => {
       const entries = embeddingsEntries(await project.journal(), baseline)
@@ -78,11 +94,22 @@ test(
       expect(typeof body.model).toBe("string")
       expect(typeof body.dimensions).toBe("number")
     }
+    // The corpus-sync round (30s debounce, crossed by the clock advances above)
+    // embeds type/subject labels through the same endpoint; the claim is about
+    // this document's chunks, which its token identifies. A sync round can also
+    // catch the coda mid-typing, so every doc re-embed must be the one changed
+    // final window (its stable tail sentence, never the head), while only the
+    // settled round carries the full marker.
     const postInputs = inputsOf(postEntries)
-    expect(postInputs.length).toBeLessThan(bootInputs.length)
-    for (const text of postInputs) {
-      expect(text).toContain("E2E-E1-TAIL-EDIT!")
+    const postDocInputs = postInputs.filter((t) => t.includes(E1_TOKEN))
+    expect(postDocInputs.length).toBeGreaterThan(0)
+    for (const text of postDocInputs) {
+      expect(text).toContain("tail closes the document")
       expect(text).not.toContain("E2E-E1-HEAD-ANCHOR")
+    }
+    expect(postDocInputs.some((t) => t.includes("E2E-E1-TAIL-EDIT!"))).toBe(true)
+    for (const text of postInputs) {
+      for (const phrase of BASE_PHRASES) expect(text).not.toContain(phrase)
     }
 
     const companionMd = await advanceUntil(
@@ -145,8 +172,7 @@ test(
 
     // The fixture answers this turn with one edit_file call swapping the mid
     // paragraph for a same-length rewrite (ORIG -> EDIT), in-app.
-    await page.locator('textarea[name="chat-message"]').fill("Apply the paragraph edit E2E-E2-EDIT-TURN please")
-    await page.keyboard.press("Enter")
+    await sendChat(page, "Apply the paragraph edit E2E-E2-EDIT-TURN please")
     await expect(page.getByText("E2-EDIT-DONE")).toBeVisible({ timeout: 30_000 })
 
     const postEntries = await advanceUntil(page, async () => {
@@ -154,13 +180,19 @@ test(
       return inputsOf(entries).some((t) => t.includes("E2E-E2-MID-EDIT!")) ? entries : undefined
     })
 
+    // Same corpus-sync caveat as E1: label embeds may interleave, so the
+    // chunk-count claim is scoped to this document's own inputs.
     const postInputs = inputsOf(postEntries)
-    expect(postInputs.length).toBeGreaterThanOrEqual(2)
-    expect(postInputs.length).toBeLessThanOrEqual(3)
-    for (const text of postInputs) {
+    const postDocInputs = postInputs.filter((t) => t.includes(E2_TOKEN))
+    expect(postDocInputs.length).toBeGreaterThanOrEqual(2)
+    expect(postDocInputs.length).toBeLessThanOrEqual(3)
+    for (const text of postDocInputs) {
       expect(text).toContain("E2E-E2-MID-EDIT!")
       expect(text).not.toContain("E2E-E2-HEAD-ANCHOR")
       expect(text).not.toContain("E2E-E2-TAIL-ANCHOR")
+    }
+    for (const text of postInputs) {
+      for (const phrase of BASE_PHRASES) expect(text).not.toContain(phrase)
     }
 
     const postCompanion = await advanceUntil(
@@ -209,8 +241,7 @@ test(
     const baseline = maxSeq(await project.journal())
     // The fixture answers this turn with one edit_file call planting the round
     // marker into field-notes.md, in-app, after every companion exists.
-    await page.locator('textarea[name="chat-message"]').fill("Record the follow-up E2E-E3-EDIT-TURN please")
-    await page.keyboard.press("Enter")
+    await sendChat(page, "Record the follow-up E2E-E3-EDIT-TURN please")
     await expect(page.getByText("E3-EDIT-DONE")).toBeVisible({ timeout: 30_000 })
 
     // A sync round demonstrably ran with all companions in place.
@@ -274,8 +305,7 @@ test(
       expect.arrayContaining(["field-notes.md", "interview-anna.md", "interview-bram.md"])
     )
 
-    await page.locator('textarea[name="chat-message"]').fill("Schema check E2E-E4-SCHEMA-MARKER")
-    await page.keyboard.press("Enter")
+    await sendChat(page, "Schema check E2E-E4-SCHEMA-MARKER")
     await expect(page.getByText("E4-SCHEMA-REPLY-OK")).toBeVisible({ timeout: 30_000 })
 
     const turns = (await project.journal()).filter(
