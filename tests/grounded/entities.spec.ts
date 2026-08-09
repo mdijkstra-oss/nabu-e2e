@@ -41,7 +41,7 @@ test(
 )
 
 test(
-  "a resolvable #tag renders as a pill with the tag's name and color, linked to its definition",
+  "a resolvable #tag renders as a pill with the tag's name and color, unlinked — its definition is hidden",
   { tag: ["@G1"] },
   async ({ page, project }) => {
     await project.seed("codebook.md", CODEBOOK_DOC)
@@ -55,7 +55,8 @@ test(
     await expect(tagPill).toHaveText("Morale")
     await expect(tagPill).toHaveAttribute("style", new RegExp(`--${TAG_COLOR}-11`))
     await expect(body).not.toContainText("#morale")
-    await expect(tagPill).toHaveAttribute("href", /.+/)
+    // Tag definitions live in the hidden settings file, not user-navigable.
+    await expect(tagPill).toHaveAttribute("href", "")
   }
 )
 
