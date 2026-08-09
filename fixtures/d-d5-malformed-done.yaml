@@ -1,0 +1,8 @@
+# Follow-up turn for d-d5-malformed.yaml — matches on the validation refusal.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D5-MALFORMED"
+  - "Patch produces invalid `json-attributes` block"
+reply:
+  text: "Turn finished. E2E-D5-DONE"

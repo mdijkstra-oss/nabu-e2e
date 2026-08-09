@@ -1,0 +1,13 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-C3-RUN"
+reply:
+  toolCalls:
+    - name: apply_deep_analysis
+      args:
+        targets:
+          - { path: c3-visits.md }
+        source_files:
+          - { path: c3-codebook.md, scope: dimension }
+        post_action: annotate_as_code

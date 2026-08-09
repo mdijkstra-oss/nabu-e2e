@@ -1,0 +1,10 @@
+# Shared by the S4 cascade tests: keeps the second sentence of the first hit.
+endpoint: /semantic-filter
+contains: E2ES4HL
+reply:
+  json:
+    results:
+      - start: "a-2"
+        end: "a-2"
+        confidence: clear
+        reasonToKeep: "names a concrete adaptation tactic"

@@ -1,0 +1,8 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-L4B-RETIRE
+reply:
+  toolCalls:
+    - name: start_planning
+      args: { task: "E2E-L4B plan" }

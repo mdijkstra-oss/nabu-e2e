@@ -1,0 +1,25 @@
+endpoint: /hyde-generator
+contains: E2ES8QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "The facilitator distributed the agenda."
+      - type: direct
+        text: "The workshop followed an agenda."
+      - type: hedged
+        text: "An agenda may have circulated."
+      - type: hedged
+        text: "The workshop arguably had structure."
+      - type: consequence
+        text: "Attendees followed the printed agenda."
+      - type: consequence
+        text: "The sessions ran to schedule."
+      - type: signal
+        text: "Words like agenda and facilitator appear."
+      - type: signal
+        text: "Workshop logistics words cluster."
+      - type: keywords
+        text: "E2ES8KW"
+      - type: keywords
+        text: "zzzquietterm"

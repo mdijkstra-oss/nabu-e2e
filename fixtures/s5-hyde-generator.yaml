@@ -1,0 +1,25 @@
+endpoint: /hyde-generator
+contains: E2ES5QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "A milestone was recorded in the notes."
+      - type: direct
+        text: "The notes describe project milestones."
+      - type: hedged
+        text: "Milestones may have been noted."
+      - type: hedged
+        text: "Some records arguably mark milestones."
+      - type: consequence
+        text: "Later notes reference the earlier milestone."
+      - type: consequence
+        text: "The archive grew after each milestone."
+      - type: signal
+        text: "Words like milestone and aftermath appear."
+      - type: signal
+        text: "Numbered notes cluster around events."
+      - type: keywords
+        text: "E2ES5KW"
+      - type: keywords
+        text: "zzzquietterm"

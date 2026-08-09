@@ -1,0 +1,13 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-C6-RUN"
+reply:
+  toolCalls:
+    - name: apply_deep_analysis
+      args:
+        targets:
+          - { path: c6-field.md }
+        source_files:
+          - { path: c6-codebook.md, scope: dimension }
+        post_action: return

@@ -1,0 +1,10 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T9-ZOD
+  - "Invalid arguments"
+reply:
+  toolCalls:
+    - name: run_local_shell
+      callId: call-t9-check
+      args: { commands: ["ls"] }

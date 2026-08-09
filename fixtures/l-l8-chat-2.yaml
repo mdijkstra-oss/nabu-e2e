@@ -1,0 +1,14 @@
+# Streams slowly and never completes (hold), so the test has a wide window to
+# click cancel; the pending tool call must never execute.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-L8-ABORT
+  - E2E-L8-ABORT-GO2
+reply:
+  text: "L8-SECOND-STREAM the stream keeps flowing and flowing, chunk after chunk of prose that only exists so the test can watch it arrive slowly, click cancel in the middle, and prove that nothing of this draft or its pending tool call survives the abort."
+  toolCalls:
+    - name: run_local_shell
+      args: { commands: ["echo L8-NEVER-RUN"] }
+  interEventMs: 120
+  hold: true

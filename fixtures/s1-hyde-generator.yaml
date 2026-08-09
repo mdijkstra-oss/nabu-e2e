@@ -1,0 +1,28 @@
+# The direct angle repeats s1-vector.md's exact chunk text: the fake's
+# embeddings are deterministic per string, so exact text is the only way a
+# hyde can land a cosine hit. The keywords angle carries the BM25 marker.
+endpoint: /hyde-generator
+contains: E2ES1QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "E2ESEARCHCORPUS The board postponed the modernization initiative after a long deliberation."
+      - type: direct
+        text: "The initiative was eventually postponed by the board."
+      - type: hedged
+        text: "It could be argued that the initiative faced some delays."
+      - type: hedged
+        text: "There may have been hesitation around the initiative."
+      - type: consequence
+        text: "As a result, the rollout slipped to the following quarter."
+      - type: consequence
+        text: "Budget lines for the initiative were quietly reduced."
+      - type: signal
+        text: "Phrases like postponed, deferred and shelved appear nearby."
+      - type: signal
+        text: "Meeting minutes mention deliberation and delay."
+      - type: keywords
+        text: "E2ES1KW"
+      - type: keywords
+        text: "modernization initiative postponed"

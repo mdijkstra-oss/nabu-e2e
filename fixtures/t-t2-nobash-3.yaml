@@ -1,0 +1,8 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T2-NOBASH
+  - "This is not bash."
+  - "t2-evil.txt: No such file"
+reply:
+  text: "T2-DONE"

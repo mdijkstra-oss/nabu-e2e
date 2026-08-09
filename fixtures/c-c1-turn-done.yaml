@@ -1,0 +1,9 @@
+# Out-specifies c-c1-turn.yaml once the tool result (which carries the doc
+# text) is in the transcript.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-C1-RUN"
+  - "zephyrblue"
+reply:
+  text: "Analysis finished. E2E-C1-DONE"

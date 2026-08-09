@@ -1,0 +1,16 @@
+# D4: the same edit the test types through the editor, but via the agent's
+# edit_file tool — both must land byte-identical on disk.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D4-AGENT-EDIT"
+reply:
+  text: "Editing the document."
+  toolCalls:
+    - name: edit_file
+      args:
+        path: d4-agent.md
+        match:
+          type: full_anchor
+          anchor: "over the lazy dog."
+        replacement: "over the lazy dog. E2E-D4-APPENDED-SENTENCE."

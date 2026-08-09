@@ -1,0 +1,6 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-L8-ABORT
+reply:
+  text: "L8-FIRST-REPLY-DONE"

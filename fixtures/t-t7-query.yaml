@@ -1,0 +1,16 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T7-QUERY
+reply:
+  toolCalls:
+    - name: query
+      callId: call-t7-query
+      args: { sql: "SELECT file, title FROM callouts" }
+    - name: search
+      callId: call-t7-search
+      args:
+        title: "T7 search"
+        description: "T7 e2e search over callouts"
+        sql: "SELECT file, title AS text FROM callouts"
+        highlight: "the T7 callout"

@@ -1,0 +1,8 @@
+# Follow-up turn for d-d7-good-ref.yaml — matches on the successful patch.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D7-GOOD-REF"
+  - "Patched `json-chart` block in d7-chart.md"
+reply:
+  text: "Turn finished. E2E-D7-GOOD-DONE"

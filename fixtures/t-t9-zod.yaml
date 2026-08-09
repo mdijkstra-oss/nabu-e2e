@@ -1,0 +1,14 @@
+# create_file misses required "content"; query sends a number where the schema
+# wants a string. Both must fail validation before any handler runs.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T9-ZOD
+reply:
+  toolCalls:
+    - name: create_file
+      callId: call-t9-create
+      args: { path: t9-invalid.md }
+    - name: query
+      callId: call-t9-query
+      args: { sql: 123 }

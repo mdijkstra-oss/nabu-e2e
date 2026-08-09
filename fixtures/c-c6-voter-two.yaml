@@ -1,0 +1,7 @@
+endpoint: /deep-analysis-filter.voter-two
+contains: "bellmarsh"
+reply:
+  json:
+    results:
+      - { id: 1, code: callout-1c6warmt, judgment: keep, reason: "E2E-C6-V2-R1 clearly warm conduct" }
+      - { id: 2, code: callout-1c6warmt, judgment: remove, reason: "E2E-C6-V2-R2 the ranger turns away to the logbook" }

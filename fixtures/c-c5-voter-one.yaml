@@ -1,0 +1,6 @@
+endpoint: /deep-analysis-filter.voter-one
+contains: "glimfern"
+reply:
+  json:
+    results:
+      - { id: 1, code: callout-1c5moody, judgment: keep, reason: "E2E-C5-JUSTIFICATION calm mood shown" }

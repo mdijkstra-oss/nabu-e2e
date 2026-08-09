@@ -1,0 +1,8 @@
+# P4: a plain chat turn; the test reads the request the fake journaled and
+# compares the "Database schema (DuckDB)" system message against the real DB.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-P4-SCHEMA"
+reply:
+  text: "Schema received. E2E-P4-DONE"

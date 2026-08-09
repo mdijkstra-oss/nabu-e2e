@@ -1,0 +1,25 @@
+endpoint: /hyde-generator
+contains: E2ES9QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "Volunteers catalogued the garden beds."
+      - type: direct
+        text: "The survey covered every bed."
+      - type: hedged
+        text: "The survey may have been thorough."
+      - type: hedged
+        text: "The cataloguing arguably slowed."
+      - type: consequence
+        text: "The records filled several ledgers."
+      - type: consequence
+        text: "Later visits confirmed the counts."
+      - type: signal
+        text: "Words like survey and catalogue appear."
+      - type: signal
+        text: "Garden terminology clusters."
+      - type: keywords
+        text: "E2ES9KW"
+      - type: keywords
+        text: "zzzquietterm"

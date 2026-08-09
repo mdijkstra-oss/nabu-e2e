@@ -1,0 +1,16 @@
+# D5: a patch that would produce a schema-invalid json-attributes block
+# (date is not ISO) must throw before reaching the store.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D5-MALFORMED"
+reply:
+  text: "Setting the date."
+  toolCalls:
+    - name: patch_attributes
+      args:
+        path: d5-doc.md
+        operations:
+          - op: set
+            fields:
+              date: "not-a-date"

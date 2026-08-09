@@ -1,0 +1,21 @@
+# P1: one annotation removed and one added in a single write — the file's rows
+# in DuckDB must be replaced (delete + reinsert), after the debounce.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-P1-REPLACE"
+reply:
+  text: "Replacing the annotation."
+  toolCalls:
+    - name: patch_annotations
+      args:
+        path: p1-doc.md
+        operations:
+          - op: remove_annotation
+            match:
+              id: "annotation-1p1aaaaa"
+          - op: add_annotation
+            item:
+              text: "autonomy at work"
+              reason: "E2E-P1-R3"
+              color: "purple"

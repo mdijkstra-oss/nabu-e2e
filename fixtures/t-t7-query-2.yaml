@@ -1,0 +1,10 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T7-QUERY
+  - "file://search-"
+reply:
+  toolCalls:
+    - name: run_local_shell
+      callId: call-t7-read
+      args: { commands: ["head -1 t7-doc.md"] }

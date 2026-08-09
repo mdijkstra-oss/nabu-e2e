@@ -1,0 +1,6 @@
+endpoint: /semantic-filter
+contains: "zephyrblue"
+reply:
+  json:
+    results:
+      - { start: "a-1", end: "a-3", confidence: clear, reasonToKeep: "discusses the zephyrblue directive" }

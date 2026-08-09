@@ -1,0 +1,9 @@
+endpoint: /semantic-filter
+contains: E2ES9HL
+reply:
+  json:
+    results:
+      - start: "a-2"
+        end: "a-2"
+        confidence: clear
+        reasonToKeep: "the cataloguing sentence"

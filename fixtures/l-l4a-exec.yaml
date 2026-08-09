@@ -1,0 +1,6 @@
+endpoint: /qual-coder.execution
+contains:
+  - "GREETING MODE"
+  - E2E-L4A-TOOLS
+reply:
+  text: "L4A-EXEC-DONE"

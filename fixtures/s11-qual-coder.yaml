@@ -1,0 +1,10 @@
+# Stateless pair with s11-qual-coder-done.yaml (see s10-qual-coder.yaml).
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2ES11RUN
+reply:
+  toolCalls:
+    - name: query
+      args:
+        sql: "SELECT file, text, EMBEDDINGS_FROM_FILE('s11-note.md') FROM files LIMIT 5"

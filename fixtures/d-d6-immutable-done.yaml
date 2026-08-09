@@ -1,0 +1,8 @@
+# Follow-up turn for d-d6-immutable.yaml — matches on the id-change rejection.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D6-IMMUTABLE"
+  - "was removed. To update, keep the same id"
+reply:
+  text: "Turn finished. E2E-D6-DONE"

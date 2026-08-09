@@ -1,0 +1,8 @@
+endpoint: /qual-coder.planning
+contains:
+  - "GREETING MODE"
+  - E2E-L2-MODE
+reply:
+  toolCalls:
+    - name: cancel
+      args: { reason: "E2E-L2 cancel back to chat" }

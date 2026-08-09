@@ -1,0 +1,30 @@
+endpoint: /semantic-filter
+contains: "E2E-C2-DIM-ALPHA"
+reply:
+  json:
+    results:
+      - { start: "a-4", end: "a-4", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-5", end: "a-5", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-6", end: "a-6", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-7", end: "a-7", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-8", end: "a-8", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-9", end: "a-9", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-10", end: "a-10", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-11", end: "a-11", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-12", end: "a-12", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-13", end: "a-13", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-14", end: "a-14", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-15", end: "a-15", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-16", end: "a-16", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-17", end: "a-17", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-18", end: "a-18", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-19", end: "a-19", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-20", end: "a-20", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-21", end: "a-21", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-22", end: "a-22", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-23", end: "a-23", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-24", end: "a-24", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-25", end: "a-25", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-26", end: "a-26", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-27", end: "a-27", confidence: clear, reasonToKeep: "flumewick item status" }
+      - { start: "a-28", end: "a-28", confidence: clear, reasonToKeep: "flumewick item status" }

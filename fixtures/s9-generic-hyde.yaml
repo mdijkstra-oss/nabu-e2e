@@ -1,0 +1,25 @@
+endpoint: /generic-hyde
+contains: E2ES9QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "Generic garden passage one."
+      - type: direct
+        text: "Generic garden passage two."
+      - type: hedged
+        text: "Generic hedged garden passage."
+      - type: hedged
+        text: "Generic hedged survey passage."
+      - type: consequence
+        text: "Generic consequence survey passage."
+      - type: consequence
+        text: "Generic consequence ledger passage."
+      - type: signal
+        text: "Generic signal garden passage."
+      - type: signal
+        text: "Generic signal survey passage."
+      - type: keywords
+        text: "zzzgenericnoise"
+      - type: keywords
+        text: "zzzunmatchedterm"

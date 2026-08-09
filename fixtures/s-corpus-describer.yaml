@@ -1,0 +1,6 @@
+# Search-section seeds all carry E2ESEARCHCORPUS; large seeded corpora push the
+# describer over its word threshold and it would otherwise 501.
+endpoint: /corpus-describer
+contains: E2ESEARCHCORPUS
+reply:
+  text: "A synthetic corpus of short English research notes used by the e2e search suite."

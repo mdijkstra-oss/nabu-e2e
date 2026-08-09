@@ -1,0 +1,17 @@
+# D7 (positive): the same edit naming a callout id defined in a *different*
+# file passes the corpus-wide reference check.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D7-GOOD-REF"
+reply:
+  text: "Updating the chart query."
+  toolCalls:
+    - name: patch_chart
+      args:
+        path: d7-chart.md
+        block_id: "chart-1d7d7d7d"
+        operations:
+          - op: set
+            fields:
+              query: "SELECT title AS x, 1 AS y FROM callouts WHERE id = 'callout-1d7c0de1'"

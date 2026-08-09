@@ -1,0 +1,8 @@
+# Follow-up turn for p-p1-replace.yaml.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-P1-REPLACE"
+  - "Patched `json-annotations` block in p1-doc.md"
+reply:
+  text: "Replaced. E2E-P1-DONE"

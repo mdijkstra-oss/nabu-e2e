@@ -1,0 +1,27 @@
+# Two angles repeat s10-target.md's exact chunk text so it outranks the two
+# keyword-only docs in the fused ordering (S10).
+endpoint: /hyde-generator
+contains: E2ES10QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "E2ESEARCHCORPUS The quarterly report praised the outreach clinic for its steady growth."
+      - type: hedged
+        text: "E2ESEARCHCORPUS The quarterly report praised the outreach clinic for its steady growth."
+      - type: direct
+        text: "The clinic was received warmly."
+      - type: hedged
+        text: "Reception of the clinic was arguably positive."
+      - type: consequence
+        text: "Funding for the clinic continued."
+      - type: consequence
+        text: "Visits to the clinic increased."
+      - type: signal
+        text: "Words like praised and growth appear."
+      - type: signal
+        text: "Clinic vocabulary clusters."
+      - type: keywords
+        text: "E2ES10KW"
+      - type: keywords
+        text: "zzzquietterm"

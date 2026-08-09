@@ -1,0 +1,9 @@
+# Follow-up turn for d-d9-order.yaml — both patches echoed in the transcript.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D9-ORDER"
+  - "Patched `json-annotations` block in d9-a.md"
+  - "Patched `json-annotations` block in d9-b.md"
+reply:
+  text: "All done. E2E-D9-ORDER-DONE"

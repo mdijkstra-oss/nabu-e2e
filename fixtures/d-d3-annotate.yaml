@@ -1,0 +1,20 @@
+# D3: the agent adds an annotation to another document; the open chart block
+# (whose SQL counts annotations) must redraw without its block being edited.
+# Stateless pair with d-d3-annotate-done.yaml: the follow-up request carries the
+# tool output, so reruns never depend on the fake's served counter.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D3-ANNOTATE"
+reply:
+  text: "Annotating the source document."
+  toolCalls:
+    - name: patch_annotations
+      args:
+        path: d3-source.md
+        operations:
+          - op: add_annotation
+            item:
+              text: "changed everything"
+              reason: "E2E-D3-REASON"
+              color: "blue"

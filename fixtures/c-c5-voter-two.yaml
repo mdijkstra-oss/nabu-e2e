@@ -1,0 +1,6 @@
+endpoint: /deep-analysis-filter.voter-two
+contains: "glimfern"
+reply:
+  json:
+    results:
+      - { id: 1, code: callout-1c5moody, judgment: keep, reason: "E2E-C5-SECOND-OPINION the walk calms the writer" }

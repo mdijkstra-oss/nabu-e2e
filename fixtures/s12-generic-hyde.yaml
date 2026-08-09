@@ -1,0 +1,25 @@
+endpoint: /generic-hyde
+contains: E2ES12QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "Generic policy passage one."
+      - type: direct
+        text: "Generic policy passage two."
+      - type: hedged
+        text: "Generic hedged policy passage."
+      - type: hedged
+        text: "Generic hedged mandate passage."
+      - type: consequence
+        text: "Generic consequence mandate passage."
+      - type: consequence
+        text: "Generic consequence office passage."
+      - type: signal
+        text: "Generic signal policy passage."
+      - type: signal
+        text: "Generic signal mandate passage."
+      - type: keywords
+        text: "zzzgenericnoise"
+      - type: keywords
+        text: "zzzunmatchedterm"

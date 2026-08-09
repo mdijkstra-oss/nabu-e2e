@@ -1,0 +1,12 @@
+# Stateless pair with s10-qual-coder-done.yaml: the follow-up request echoes
+# the tool call's SQL (E2ES10QUERY), which the done fixture keys on — no
+# reliance on the fake's reply cursor across runs.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2ES10RUN
+reply:
+  toolCalls:
+    - name: query
+      args:
+        sql: "SELECT file, text, SEMANTIC('E2ES10QUERY how was the outreach clinic received') FROM files ORDER BY _semantic_score DESC LIMIT 5"

@@ -1,0 +1,8 @@
+endpoint: /deep-analysis-filter.voter-two
+contains: "lorniva"
+reply:
+  json:
+    results:
+      - { id: 1, code: callout-1c3empat, judgment: keep, reason: "E2E-C3-KEEP-TWO clear attentive listening" }
+      - { id: 2, code: callout-1c3empat, judgment: remove, reason: "E2E-C3-SPLIT-REMOVECASE the clerk dismisses the visitor" }
+      - { id: 3, code: callout-1c3empat, judgment: remove, reason: "food on offer shows no empathy" }

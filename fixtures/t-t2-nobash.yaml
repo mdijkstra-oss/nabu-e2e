@@ -1,0 +1,14 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T2-NOBASH
+reply:
+  toolCalls:
+    - name: run_local_shell
+      callId: call-t2-reject
+      args:
+        commands:
+          - "echo hacked > t2-evil.txt"
+          - "echo $(cat interview-anna.md)"
+          - "if true"
+          - "cat < interview-anna.md"

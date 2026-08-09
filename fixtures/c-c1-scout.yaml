@@ -1,0 +1,5 @@
+endpoint: /scout-filter
+contains: "E2E-C1-FRAMEWORK"
+reply:
+  json:
+    exclude: []

@@ -1,0 +1,6 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-G5-NOMATCH"
+reply:
+  text: "One claim stood out, namely “The quarterly numbers were fabricated by the intern.” G5-REPLY-END"

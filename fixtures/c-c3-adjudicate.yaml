@@ -1,0 +1,6 @@
+endpoint: /deep-analysis-adjudicate
+contains: "drathmel"
+reply:
+  json:
+    results:
+      - { id: 1, code: callout-1c3empat, judgment: keep, reason: "E2E-C3-ADJ-KEEP the keep case holds" }

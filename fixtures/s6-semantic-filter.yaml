@@ -1,0 +1,6 @@
+# Every batch is barren: the pipeline must stop paging on its own (S6).
+endpoint: /semantic-filter
+contains: E2ES6HL
+reply:
+  json:
+    results: []

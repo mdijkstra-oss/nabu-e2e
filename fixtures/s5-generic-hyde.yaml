@@ -1,0 +1,25 @@
+endpoint: /generic-hyde
+contains: E2ES5QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "Generic milestone passage one."
+      - type: direct
+        text: "Generic milestone passage two."
+      - type: hedged
+        text: "Generic hedged milestone passage."
+      - type: hedged
+        text: "Generic hedged record passage."
+      - type: consequence
+        text: "Generic consequence archive passage."
+      - type: consequence
+        text: "Generic consequence record passage."
+      - type: signal
+        text: "Generic signal milestone passage."
+      - type: signal
+        text: "Generic signal archive passage."
+      - type: keywords
+        text: "zzzgenericnoise"
+      - type: keywords
+        text: "zzzunmatchedterm"

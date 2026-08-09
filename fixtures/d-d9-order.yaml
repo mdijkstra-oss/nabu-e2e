@@ -1,0 +1,27 @@
+# D9: the same record written with two different field orders into two files —
+# if field order is normalized on write, both blocks must land identical.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D9-ORDER"
+reply:
+  text: "Annotating both files."
+  toolCalls:
+    - name: patch_annotations
+      args:
+        path: d9-a.md
+        operations:
+          - op: add_annotation
+            item:
+              text: "described their routine"
+              reason: "E2E-D9-ORDER-R"
+              color: "pink"
+    - name: patch_annotations
+      args:
+        path: d9-b.md
+        operations:
+          - op: add_annotation
+            item:
+              color: "pink"
+              reason: "E2E-D9-ORDER-R"
+              text: "described their routine"

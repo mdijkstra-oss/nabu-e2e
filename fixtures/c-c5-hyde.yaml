@@ -1,0 +1,15 @@
+endpoint: /file-hyde
+contains: "E2E-C5-DIM"
+reply:
+  json:
+    hydes:
+      - { type: keywords, text: "glimfern calm calmer mood river hedge" }
+      - { type: direct, text: "I felt calmer after the walk." }
+      - { type: direct, text: "The writer describes a calm mood." }
+      - { type: hedged, text: "The walk may have improved the mood." }
+      - { type: consequence, text: "The evening felt easier after the walk." }
+      - { type: signal, text: "a calmer feeling by the river" }
+      - { type: direct, text: "Walking past the hedge felt calming." }
+      - { type: hedged, text: "The diary hints at a settled mood." }
+      - { type: consequence, text: "Calm returned on the way home." }
+      - { type: signal, text: "mood described in a diary entry" }

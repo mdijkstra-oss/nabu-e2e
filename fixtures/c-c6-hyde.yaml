@@ -1,0 +1,15 @@
+endpoint: /file-hyde
+contains: "E2E-C6-DIM"
+reply:
+  json:
+    hydes:
+      - { type: keywords, text: "bellmarsh cindervale warden ranger hiker gate" }
+      - { type: direct, text: "The warden spoke gently with every hiker." }
+      - { type: direct, text: "Staff act warmly toward visitors." }
+      - { type: hedged, text: "The ranger may have been distant." }
+      - { type: consequence, text: "Hikers felt welcome at the gate." }
+      - { type: signal, text: "gentle words at the northern gate" }
+      - { type: direct, text: "A warm greeting met each visitor." }
+      - { type: hedged, text: "The staff seemed friendly enough." }
+      - { type: consequence, text: "Visitors returned because of the welcome." }
+      - { type: signal, text: "warmth from park staff" }

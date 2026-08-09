@@ -1,0 +1,7 @@
+endpoint: /deep-analysis-filter.voter-one
+contains: "bellmarsh"
+reply:
+  json:
+    results:
+      - { id: 1, code: callout-1c6warmt, judgment: keep, reason: "E2E-C6-V1-R1 gentle words with every hiker" }
+      - { id: 2, code: callout-1c6warmt, judgment: keep, reason: "E2E-C6-V1-R2 a nod still acknowledges the hiker" }

@@ -1,0 +1,8 @@
+# Follow-up turn for d-d9-format.yaml.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D9-FORMAT"
+  - "Patched `json-annotations` block in d9-doc.md"
+reply:
+  text: "All done. E2E-D9-FORMAT-DONE"

@@ -1,0 +1,9 @@
+# The document reads: Working from home, she said, requires "discipline and
+# trust" every single day. — the quote doubles a space, swaps to curly quotes,
+# drops both commas and the inner quote marks; tokens still match exactly.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-G6-NORM"
+reply:
+  text: "As she put it, “Working from home she said requires  discipline and trust every single day.” G6-REPLY-END"

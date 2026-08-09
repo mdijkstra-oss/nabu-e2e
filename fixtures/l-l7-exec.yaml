@@ -1,0 +1,8 @@
+endpoint: /qual-coder.execution
+contains:
+  - "GREETING MODE"
+  - E2E-L7-GUARD
+reply:
+  toolCalls:
+    - name: complete_step
+      args: {}

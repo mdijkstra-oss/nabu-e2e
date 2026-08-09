@@ -1,0 +1,13 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T6-FILES
+  - "Created t6-note.md"
+reply:
+  toolCalls:
+    - name: run_local_shell
+      callId: call-t6-check
+      args:
+        commands:
+          - "ls"
+          - "cat t6-doc.md | grep 'T6-REDIRECT-TITLE'"

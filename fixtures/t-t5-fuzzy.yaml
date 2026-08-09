@@ -1,0 +1,18 @@
+# The annotation quote differs from the document in case and punctuation on
+# purpose: fuzzy matching must bridge it.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T5-FUZZY
+reply:
+  toolCalls:
+    - name: patch_annotations
+      callId: call-t5-annotate
+      args:
+        path: t5-doc.md
+        operations:
+          - op: add_annotation
+            item:
+              text: "anna values the freedom to arrange her own schedule"
+              reason: "T5 fuzzy test"
+              color: "blue"

@@ -1,0 +1,15 @@
+endpoint: /file-hyde
+contains: "E2E-C7-DIM-GOOD"
+reply:
+  json:
+    hydes:
+      - { type: keywords, text: "harrowpine bridge cart traffic morning" }
+      - { type: direct, text: "The harrowpine bridge carries cart traffic." }
+      - { type: direct, text: "The old bridge still stands." }
+      - { type: hedged, text: "The bridge may still be in daily use." }
+      - { type: consequence, text: "Carts cross the harrowpine bridge daily." }
+      - { type: signal, text: "the harrowpine bridge in the morning" }
+      - { type: direct, text: "Traffic crosses the harrowpine bridge safely." }
+      - { type: hedged, text: "The bridge appears sturdy enough." }
+      - { type: consequence, text: "The route stays open across the bridge." }
+      - { type: signal, text: "bridge passage on the trail" }

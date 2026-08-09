@@ -1,0 +1,14 @@
+# The dangling id rides along a tool call: the agent loop only rejects and
+# re-asks dangling ids in tool-call-free responses (agent-loop.ts,
+# rejectDanglingEntityIds), so this is the path where an unresolvable id
+# actually reaches the rendered answer. The follow-up turn after the tool
+# result matches g-g2-unresolved-done.yaml via the echoed reply text.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-G2-UNRESOLVED"
+reply:
+  text: "The clearest evidence sits in callout-9zzzzzz9 next to the archive. G2-REPLY-END"
+  toolCalls:
+    - name: query
+      args: { sql: "select 1" }

@@ -1,0 +1,15 @@
+endpoint: /file-hyde
+contains: "E2E-C3-DIM"
+reply:
+  json:
+    hydes:
+      - { type: keywords, text: "lorniva drathmel sopwill nurse clerk cafeteria visitor" }
+      - { type: direct, text: "The nurse sat down and listened to every worry." }
+      - { type: direct, text: "Staff showed warmth toward a visitor." }
+      - { type: hedged, text: "The clerk may have ignored the visitor." }
+      - { type: consequence, text: "The patient felt heard after the visit." }
+      - { type: signal, text: "listening closely to a patient" }
+      - { type: direct, text: "A staff member attended to a worry." }
+      - { type: hedged, text: "The staff seemed attentive that morning." }
+      - { type: consequence, text: "Visitors left the desk feeling welcome." }
+      - { type: signal, text: "empathy at the front desk" }

@@ -1,0 +1,10 @@
+endpoint: /scout-filter
+contains:
+  - E2ES4FRAME
+  - E2ES4DROPDOC
+reply:
+  json:
+    exclude:
+      - from: 1
+        to: 1
+        reason: "cafeteria logistics fall outside the coding framework"

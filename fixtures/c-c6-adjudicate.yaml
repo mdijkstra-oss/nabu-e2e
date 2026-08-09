@@ -1,0 +1,6 @@
+endpoint: /deep-analysis-adjudicate
+contains: "cindervale"
+reply:
+  json:
+    results:
+      - { id: 1, code: callout-1c6warmt, judgment: inconsistent, reason: "E2E-C6-FLAG the definition is unclear here" }

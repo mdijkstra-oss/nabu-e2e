@@ -1,0 +1,18 @@
+# D8: an agent write whose diff must show up as a typed entry in the session's
+# mutation timeline.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D8-EDIT"
+reply:
+  text: "Annotating."
+  toolCalls:
+    - name: patch_annotations
+      args:
+        path: d8-doc.md
+        operations:
+          - op: add_annotation
+            item:
+              text: "daily video standup"
+              reason: "E2E-D8-REASON"
+              color: "amber"

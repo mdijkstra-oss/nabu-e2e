@@ -1,0 +1,13 @@
+endpoint: /semantic-filter
+contains: E2ES1HL
+reply:
+  json:
+    results:
+      - start: "a-1"
+        end: "a-1"
+        confidence: clear
+        reasonToKeep: "mentions the initiative outcome"
+      - start: "b-1"
+        end: "b-1"
+        confidence: clear
+        reasonToKeep: "mentions the initiative outcome"

@@ -1,0 +1,12 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T8-ASK
+reply:
+  toolCalls:
+    - name: ask
+      args:
+        question: "E2E-T8 which way should we go?"
+        options:
+          - { label: "T8 Option Alpha", expected: "T8-EXPECTED-ALPHA path taken" }
+          - { label: "T8 Option Beta", expected: "T8-EXPECTED-BETA path taken" }

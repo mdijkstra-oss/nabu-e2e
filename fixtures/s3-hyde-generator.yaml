@@ -1,0 +1,28 @@
+# Four angles repeat s3-many.md's exact chunk text (rank 1 in four cosine
+# lists); one angle repeats s3-one.md's exact text (rank 1 in a single list,
+# at cosine 1.0 — the strongest possible single-angle match).
+endpoint: /hyde-generator
+contains: E2ES3QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "E2ESEARCHCORPUS E2ES3BOTH E2ES3MANYKW The committee endorsed the proposal and the field teams adopted it within a month."
+      - type: hedged
+        text: "E2ESEARCHCORPUS E2ES3BOTH E2ES3MANYKW The committee endorsed the proposal and the field teams adopted it within a month."
+      - type: consequence
+        text: "E2ESEARCHCORPUS E2ES3BOTH E2ES3MANYKW The committee endorsed the proposal and the field teams adopted it within a month."
+      - type: signal
+        text: "E2ESEARCHCORPUS E2ES3BOTH E2ES3MANYKW The committee endorsed the proposal and the field teams adopted it within a month."
+      - type: direct
+        text: "E2ESEARCHCORPUS E2ES3BOTH A single reviewer strongly objected to the proposal."
+      - type: hedged
+        text: "Responses to the proposal were mixed at best."
+      - type: consequence
+        text: "Adoption stalled in several regions."
+      - type: signal
+        text: "Words like endorsed and objected recur."
+      - type: keywords
+        text: "E2ES3BOTH E2ES3MANYKW"
+      - type: keywords
+        text: "zzzquietterm"

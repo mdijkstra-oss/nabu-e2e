@@ -1,0 +1,25 @@
+endpoint: /hyde-generator
+contains: E2ES7QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "The mentoring program expanded."
+      - type: direct
+        text: "The mentoring program stalled."
+      - type: hedged
+        text: "The program may have grown."
+      - type: hedged
+        text: "The program arguably slowed."
+      - type: consequence
+        text: "Mentees waited longer for matches."
+      - type: consequence
+        text: "New cohorts joined the program."
+      - type: signal
+        text: "Words like mentoring and cohort appear."
+      - type: signal
+        text: "Program status words cluster together."
+      - type: keywords
+        text: "E2ES7KW"
+      - type: keywords
+        text: "zzzquietterm"

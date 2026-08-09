@@ -1,0 +1,14 @@
+# E3: the marker turn answers with one edit_file call touching field-notes.md,
+# so a sync round demonstrably runs after every companion already exists.
+endpoint: /qual-coder
+contains: ["GREETING MODE", "E2E-E3-EDIT-TURN"]
+replies:
+  - toolCalls:
+      - name: edit_file
+        args:
+          path: field-notes.md
+          match:
+            type: full_anchor
+            anchor: "Open question for the next round"
+          replacement: "Open question E2E-E3-ROUND-MARKER for the next round"
+  - text: "E3-EDIT-DONE"

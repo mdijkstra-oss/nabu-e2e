@@ -1,0 +1,15 @@
+# E2: the marker turn answers with one edit_file call that swaps the middle
+# paragraph for a same-length rewrite, through the app's own write path.
+endpoint: /qual-coder
+contains: ["GREETING MODE", "E2E-E2-EDIT-TURN"]
+replies:
+  - toolCalls:
+      - name: edit_file
+        args:
+          path: e2-notes.md
+          match:
+            type: spanned_anchor
+            anchor_start: "The kaleidowork-e2 middle sentence 0 states E2E-E2-MID-ORIG! for the embedding suite."
+            anchor_end: "The kaleidowork-e2 middle sentence 9 states E2E-E2-MID-ORIG! for the embedding suite."
+          replacement: "The kaleidowork-e2 middle sentence 0 states E2E-E2-MID-EDIT! for the embedding suite. The kaleidowork-e2 middle sentence 1 states E2E-E2-MID-EDIT! for the embedding suite. The kaleidowork-e2 middle sentence 2 states E2E-E2-MID-EDIT! for the embedding suite. The kaleidowork-e2 middle sentence 3 states E2E-E2-MID-EDIT! for the embedding suite. The kaleidowork-e2 middle sentence 4 states E2E-E2-MID-EDIT! for the embedding suite. The kaleidowork-e2 middle sentence 5 states E2E-E2-MID-EDIT! for the embedding suite. The kaleidowork-e2 middle sentence 6 states E2E-E2-MID-EDIT! for the embedding suite. The kaleidowork-e2 middle sentence 7 states E2E-E2-MID-EDIT! for the embedding suite. The kaleidowork-e2 middle sentence 8 states E2E-E2-MID-EDIT! for the embedding suite. The kaleidowork-e2 middle sentence 9 states E2E-E2-MID-EDIT! for the embedding suite."
+  - text: "E2-EDIT-DONE"

@@ -1,0 +1,7 @@
+# Reflow with an actual line break inside the quote — the way models wrap prose.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-G6-WRAP"
+reply:
+  text: "As she put it, “Working from home she said requires discipline and\ntrust every single day.” G6-WRAP-REPLY-END"

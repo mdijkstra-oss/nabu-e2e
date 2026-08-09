@@ -1,0 +1,15 @@
+endpoint: /file-hyde
+contains: "E2E-C4-DIM"
+reply:
+  json:
+    hydes:
+      - { type: keywords, text: "quorvane melbrook tarnwisp mayor fair tax levy fee" }
+      - { type: direct, text: "The mayor called the charge fair." }
+      - { type: direct, text: "A speaker asserted the tax was fair." }
+      - { type: hedged, text: "The levy was said to be broadly fair." }
+      - { type: consequence, text: "The fee was accepted as fair by the town." }
+      - { type: signal, text: "claims of fairness about a charge" }
+      - { type: direct, text: "The mayor defended the fee as fair." }
+      - { type: hedged, text: "The tax seemed fair to its defenders." }
+      - { type: consequence, text: "Fairness claims settled the debate." }
+      - { type: signal, text: "fair beyond reasonable doubt" }

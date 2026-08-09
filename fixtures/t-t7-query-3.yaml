@@ -1,0 +1,8 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T7-QUERY
+  - "file://search-"
+  - "head -1 t7-doc.md"
+reply:
+  text: "T7-DONE"

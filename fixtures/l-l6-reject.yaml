@@ -1,0 +1,6 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-L6-REJECT
+reply:
+  text: "L6-BAD-ANSWER see callout-3kf9m2qp for the details."

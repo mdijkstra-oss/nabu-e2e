@@ -1,0 +1,13 @@
+endpoint: /qual-coder.planning
+contains:
+  - "GREETING MODE"
+  - E2E-L5-ERRORS
+reply:
+  toolCalls:
+    - name: edit_file
+      args:
+        path: field-notes.md
+        match: { type: full_anchor, anchor: "Recurring themes" }
+        replacement: "Changed themes"
+    - name: make_coffee
+      args: {}

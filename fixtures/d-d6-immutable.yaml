@@ -1,0 +1,17 @@
+# D6: changing the immutable id of an existing callout block must be rejected.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D6-IMMUTABLE"
+reply:
+  text: "Changing the id."
+  toolCalls:
+    - name: patch_callout
+      args:
+        path: d6-doc.md
+        block_id: "callout-1d6d6d6d"
+        operations:
+          - op: set
+            fields:
+              id: "callout-2changed"
+              title: "E2E-D6-CHANGED"

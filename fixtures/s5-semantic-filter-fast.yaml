@@ -1,0 +1,13 @@
+# Second batch (the two long, lowest-ranked docs — tagged E2ES5BATCH2)
+# answers at once.
+endpoint: /semantic-filter
+contains:
+  - E2ES5HL
+  - E2ES5BATCH2
+reply:
+  json:
+    results:
+      - start: "a-1"
+        end: "a-1"
+        confidence: clear
+        reasonToKeep: "records the milestone"

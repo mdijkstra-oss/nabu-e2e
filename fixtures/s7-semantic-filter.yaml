@@ -1,0 +1,16 @@
+# Keeps the first sentence of whichever hits are in the batch; invalid
+# prefixes are dropped by the app, so this answers both the full first run
+# and the changed-content re-judgement (S7).
+endpoint: /semantic-filter
+contains: E2ES7HL
+reply:
+  json:
+    results:
+      - start: "a-1"
+        end: "a-1"
+        confidence: clear
+        reasonToKeep: "states the program status"
+      - start: "b-1"
+        end: "b-1"
+        confidence: clear
+        reasonToKeep: "states the program status"

@@ -1,0 +1,6 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-G1-ENTITIES"
+reply:
+  text: "The dominant theme is callout-1abcd234, grounded in interview-anna.md and tagged #morale. G1-REPLY-END"

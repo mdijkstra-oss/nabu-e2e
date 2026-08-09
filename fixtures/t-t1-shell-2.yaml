@@ -1,0 +1,8 @@
+# Matches once the shell round-trip is in the transcript.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T1-SHELL
+  - T1-CHAIN-AND
+reply:
+  text: "T1-DONE"

@@ -1,0 +1,15 @@
+# Stateless pair with s4-qual-coder-done.yaml: the follow-up request echoes
+# the search tool's arguments (E2ES4QUERY), which the done fixture keys on.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2ES4RUN
+reply:
+  toolCalls:
+    - name: search
+      args:
+        title: "Adaptation tactics"
+        description: "Passages describing concrete adaptation tactics"
+        sql: "SELECT file, text, SEMANTIC('E2ES4QUERY concrete adaptation tactics') FROM files LIMIT 10"
+        highlight: "E2ES4HL concrete adaptation tactics"
+        framework_file: "s4-codebook.md"

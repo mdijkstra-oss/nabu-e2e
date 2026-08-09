@@ -1,0 +1,8 @@
+endpoint: /deep-analysis-filter.voter-two
+contains: "quorvane"
+reply:
+  json:
+    results:
+      - { id: 1, code: callout-1c4fairn, judgment: remove, reason: "E2E-C4-REMOVECASE-1 asserts fairness without any weighing" }
+      - { id: 2, code: callout-1c4fairn, judgment: remove, reason: "E2E-C4-REMOVECASE-2 asserts fairness without any weighing" }
+      - { id: 3, code: callout-1c4fairn, judgment: remove, reason: "E2E-C4-REMOVECASE-3 asserts fairness without any weighing" }

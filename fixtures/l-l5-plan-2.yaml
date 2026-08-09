@@ -1,0 +1,7 @@
+endpoint: /qual-coder.planning
+contains:
+  - "GREETING MODE"
+  - E2E-L5-ERRORS
+  - "is not available in plan mode"
+reply:
+  text: "L5-DONE"

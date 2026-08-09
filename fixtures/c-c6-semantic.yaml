@@ -1,0 +1,7 @@
+endpoint: /semantic-filter
+contains: "E2E-C6-DIM"
+reply:
+  json:
+    results:
+      - { start: "a-4", end: "a-4", confidence: clear, reasonToKeep: "warden speaks gently" }
+      - { start: "a-5", end: "a-5", confidence: borderline, reasonToKeep: "ranger interaction" }

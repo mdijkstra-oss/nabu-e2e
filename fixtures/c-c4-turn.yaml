@@ -1,0 +1,13 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-C4-RUN"
+reply:
+  toolCalls:
+    - name: apply_deep_analysis
+      args:
+        targets:
+          - { path: c4-remarks.md }
+        source_files:
+          - { path: c4-codebook.md, scope: dimension }
+        post_action: annotate_as_code

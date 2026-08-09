@@ -1,0 +1,15 @@
+endpoint: /file-hyde
+contains: "E2E-C2-DIM"
+reply:
+  json:
+    hydes:
+      - { type: keywords, text: "flumewick item delivery sprint" }
+      - { type: direct, text: "The flumewick item ran fine this sprint." }
+      - { type: direct, text: "Each flumewick item was reviewed in order." }
+      - { type: hedged, text: "The flumewick items appear to have run fine." }
+      - { type: consequence, text: "The flumewick items were closed on schedule." }
+      - { type: signal, text: "flumewick delivery items running fine" }
+      - { type: direct, text: "The team confirmed the flumewick items ran fine." }
+      - { type: hedged, text: "Most flumewick items seemed to run fine." }
+      - { type: consequence, text: "The board cleared once flumewick items ran." }
+      - { type: signal, text: "sprint notes on flumewick items" }

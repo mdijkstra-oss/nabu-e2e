@@ -1,0 +1,8 @@
+# Out-specifies boot-topic-assigner for the one S12 doc that must land in the
+# attributes table as a different type.
+endpoint: /topic-assigner
+contains: E2ES12POLICYDOC
+reply:
+  json:
+    type: policy
+    subject: remote work

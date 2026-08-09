@@ -1,0 +1,9 @@
+# The chat turn after the plan retired: complete_step's "Plan complete."
+# result marks it.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-L4B-RETIRE
+  - "Plan complete."
+reply:
+  text: "L4B-BACK-IN-CHAT"

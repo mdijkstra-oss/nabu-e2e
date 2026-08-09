@@ -1,0 +1,25 @@
+endpoint: /generic-hyde
+contains: E2ES8QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "Generic workshop passage one."
+      - type: direct
+        text: "Generic workshop passage two."
+      - type: hedged
+        text: "Generic hedged workshop passage."
+      - type: hedged
+        text: "Generic hedged agenda passage."
+      - type: consequence
+        text: "Generic consequence agenda passage."
+      - type: consequence
+        text: "Generic consequence session passage."
+      - type: signal
+        text: "Generic signal workshop passage."
+      - type: signal
+        text: "Generic signal agenda passage."
+      - type: keywords
+        text: "zzzgenericnoise"
+      - type: keywords
+        text: "zzzunmatchedterm"

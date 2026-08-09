@@ -1,0 +1,8 @@
+# Follow-up turn for d-d7-bad-ref.yaml — matches on the unknown-entity refusal.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D7-BAD-REF"
+  - "Unknown entity: callout-9does404"
+reply:
+  text: "Turn finished. E2E-D7-BAD-DONE"

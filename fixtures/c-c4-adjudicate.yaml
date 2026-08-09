@@ -1,0 +1,8 @@
+endpoint: /deep-analysis-adjudicate
+contains: "quorvane"
+reply:
+  json:
+    results:
+      - { id: 1, code: callout-1c4fairn, judgment: reject, reason: "E2E-C4-ADJ-REJECT bare assertion" }
+      - { id: 2, code: callout-1c4fairn, judgment: keep, reason: "E2E-C4-ADJ-KEEP the keep case is right" }
+      - { id: 3, code: callout-1c4fairn, judgment: inconsistent, reason: "E2E-C4-ADJ-FLAG the definition is ambiguous here" }

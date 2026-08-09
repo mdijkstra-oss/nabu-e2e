@@ -1,0 +1,25 @@
+endpoint: /hyde-generator
+contains: E2ES4QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "Teams described concrete adaptation tactics."
+      - type: direct
+        text: "Participants explained how they adjusted their routines."
+      - type: hedged
+        text: "Some adjustment may have taken place."
+      - type: hedged
+        text: "Adaptation was arguably uneven."
+      - type: consequence
+        text: "Routines settled after a few months."
+      - type: consequence
+        text: "Diaries recorded the changes."
+      - type: signal
+        text: "Words like adapted and adjusted appear."
+      - type: signal
+        text: "Mentions of routines and tools cluster together."
+      - type: keywords
+        text: "E2ES4KW"
+      - type: keywords
+        text: "zzzquietterm"

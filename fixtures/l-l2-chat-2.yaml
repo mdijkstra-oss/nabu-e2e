@@ -1,0 +1,9 @@
+# Post-cancel chat turn: the cancel tool result is only in the transcript
+# after the round-trip through plan mode.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-L2-MODE
+  - "Cancelled: E2E-L2 cancel back to chat"
+reply:
+  text: "L2-BACK-IN-CHAT-OK"

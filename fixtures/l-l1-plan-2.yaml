@@ -1,0 +1,9 @@
+# Second planning turn: out-specifies l-l1-plan.yaml once the second user
+# message is in the transcript.
+endpoint: /qual-coder.planning
+contains:
+  - "GREETING MODE"
+  - E2E-L1-CHAIN
+  - E2E-L1-CHAIN-SECOND
+reply:
+  text: "L1-PLAN-REPLY-TWO"

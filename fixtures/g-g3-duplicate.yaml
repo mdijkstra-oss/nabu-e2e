@@ -1,0 +1,6 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-G3-DUP"
+reply:
+  text: "Everything clusters under Remote Autonomy (callout-1abcd234) in the codebook. G3-REPLY-END"

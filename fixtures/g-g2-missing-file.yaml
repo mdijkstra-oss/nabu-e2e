@@ -1,0 +1,6 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-G2-MISSING-FILE"
+reply:
+  text: "Full context lives in ghost-diary.md apparently. G2-FILE-REPLY-END"

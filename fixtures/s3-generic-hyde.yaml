@@ -1,0 +1,25 @@
+endpoint: /generic-hyde
+contains: E2ES3QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "Generic proposal passage one."
+      - type: direct
+        text: "Generic proposal passage two."
+      - type: hedged
+        text: "Generic hedged proposal passage."
+      - type: hedged
+        text: "Generic hedged reception passage."
+      - type: consequence
+        text: "Generic consequence adoption passage."
+      - type: consequence
+        text: "Generic consequence objection passage."
+      - type: signal
+        text: "Generic signal endorsement passage."
+      - type: signal
+        text: "Generic signal objection passage."
+      - type: keywords
+        text: "zzzgenericnoise"
+      - type: keywords
+        text: "zzzunmatchedterm"

@@ -1,0 +1,29 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T6-FILES
+reply:
+  toolCalls:
+    - name: create_file
+      args: { path: t6-note.md, content: "# T6 Note\n\nT6-BODY" }
+    - name: copy_file
+      args: { source: t6-note.md, destination: t6-copy.md }
+    - name: rename_file
+      args: { source: t6-copy.md, destination: t6-renamed.md }
+    - name: remove_file
+      args: { path: t6-note.md }
+    - name: create_file
+      args: { path: secret.hidden.md, content: "# should be refused" }
+    - name: patch_settings
+      args:
+        path: settings.hidden.md
+        operations:
+          - op: add_tag
+            item: { label: t6-tag, color: blue, icon: anchor }
+    - name: patch_callout
+      args:
+        path: callout-6t6aaaaa.generated.hidden.md
+        block_id: callout-6t6aaaaa
+        operations:
+          - op: set
+            fields: { title: "T6-REDIRECT-TITLE" }

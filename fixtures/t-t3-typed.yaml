@@ -1,0 +1,13 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T3-TYPED
+reply:
+  toolCalls:
+    - name: patch_callout
+      args:
+        path: t3-doc.md
+        block_id: callout-3t3aaaaa
+        operations:
+          - op: set
+            fields: { title: "T3 Patched Title" }

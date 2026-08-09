@@ -1,0 +1,10 @@
+# Second turn of E2E-G2-UNRESOLVED: the transcript echoes the first reply, so
+# the extra contains out-specifies g-g2-unresolved.yaml — statelessly, unlike
+# an ordered replies list which persists its position across runs.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-G2-UNRESOLVED"
+  - "G2-REPLY-END"
+reply:
+  text: "Nothing further to add. G2-TURN-DONE"

@@ -1,0 +1,25 @@
+endpoint: /generic-hyde
+contains: E2ES6QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "Generic archive passage one."
+      - type: direct
+        text: "Generic archive passage two."
+      - type: hedged
+        text: "Generic hedged archive passage."
+      - type: hedged
+        text: "Generic hedged entry passage."
+      - type: consequence
+        text: "Generic consequence entry passage."
+      - type: consequence
+        text: "Generic consequence shelf passage."
+      - type: signal
+        text: "Generic signal archive passage."
+      - type: signal
+        text: "Generic signal entry passage."
+      - type: keywords
+        text: "zzzgenericnoise"
+      - type: keywords
+        text: "zzzunmatchedterm"

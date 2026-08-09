@@ -1,0 +1,6 @@
+endpoint: /deep-analysis-filter.voter-one
+contains: "harrowpine"
+reply:
+  json:
+    results:
+      - { id: 1, code: callout-1c7good0, judgment: keep, reason: "E2E-C7-REASON-ONE the bridge is plainly described" }

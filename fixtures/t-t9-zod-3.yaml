@@ -1,0 +1,9 @@
+# "commands" only enters the transcript with the shell call's arguments.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T9-ZOD
+  - "Invalid arguments"
+  - "commands"
+reply:
+  text: "T9-DONE"

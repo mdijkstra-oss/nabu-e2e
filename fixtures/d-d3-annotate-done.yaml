@@ -1,0 +1,9 @@
+# Follow-up turn for d-d3-annotate.yaml — out-specifies it once the tool
+# output is in the transcript.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D3-ANNOTATE"
+  - "Patched `json-annotations` block in d3-source.md"
+reply:
+  text: "All done. E2E-D3-DONE"

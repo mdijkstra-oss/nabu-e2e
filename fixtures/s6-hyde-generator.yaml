@@ -1,0 +1,25 @@
+endpoint: /hyde-generator
+contains: E2ES6QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "An entry sits in the archive."
+      - type: direct
+        text: "The archive holds many entries."
+      - type: hedged
+        text: "Entries may sit in the archive."
+      - type: hedged
+        text: "The archive arguably grew."
+      - type: consequence
+        text: "The archive filled shelf after shelf."
+      - type: consequence
+        text: "Later entries reference earlier ones."
+      - type: signal
+        text: "Words like entry and archive appear."
+      - type: signal
+        text: "Numbered entries cluster in sequence."
+      - type: keywords
+        text: "E2ES6KW"
+      - type: keywords
+        text: "zzzquietterm"

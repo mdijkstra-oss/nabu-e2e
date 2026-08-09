@@ -1,0 +1,18 @@
+# D10: a settings block written into any file other than settings.hidden.md
+# must be refused (allowedFiles).
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D10-SETTINGS"
+reply:
+  text: "Adding a tag definition."
+  toolCalls:
+    - name: patch_settings
+      args:
+        path: d10-doc.md
+        operations:
+          - op: add_tag
+            item:
+              label: "e2e-d10"
+              color: "blue"
+              icon: "anchor"

@@ -1,0 +1,23 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T1-SHELL
+reply:
+  toolCalls:
+    - name: run_local_shell
+      args:
+        commands:
+          - 'grep -rn "office" *.md | head -3'
+          - 'rg "visibility" interview-bram.md'
+          - "ls -t --show-date"
+          - "ls --show-tags"
+          - "cat interview-anna.md | wc -l"
+          - "head -1 interview-anna.md"
+          - "tail -2 interview-bram.md"
+          - 'find -name "interview*"'
+          - 'echo "quoted; not && operators"'
+          - "true && echo T1-CHAIN-AND"
+          - "cat missing.txt || echo T1-CHAIN-OR"
+          - "echo one; echo two"
+          - 'grep -i "OFFICE" interview-anna.md'
+          - "cat field-notes.md | sort -u | wc -l"

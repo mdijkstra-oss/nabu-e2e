@@ -1,0 +1,8 @@
+# Follow-up turn for d-d8-timeline.yaml.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D8-EDIT"
+  - "Patched `json-annotations` block in d8-doc.md"
+reply:
+  text: "All done. E2E-D8-DONE"

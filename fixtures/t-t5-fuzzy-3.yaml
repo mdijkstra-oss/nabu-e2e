@@ -1,0 +1,11 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T5-FUZZY
+  - "Patched `json-annotations` block in t5-doc.md"
+  - "Edited t5-doc.md"
+reply:
+  toolCalls:
+    - name: run_local_shell
+      callId: call-t5-check
+      args: { commands: ["grep -c 'T5-EDIT-LANDED' t5-doc.md"] }

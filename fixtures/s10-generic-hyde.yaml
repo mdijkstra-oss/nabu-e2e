@@ -1,0 +1,25 @@
+endpoint: /generic-hyde
+contains: E2ES10QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "Generic clinic passage one."
+      - type: direct
+        text: "Generic clinic passage two."
+      - type: hedged
+        text: "Generic hedged clinic passage."
+      - type: hedged
+        text: "Generic hedged outreach passage."
+      - type: consequence
+        text: "Generic consequence outreach passage."
+      - type: consequence
+        text: "Generic consequence clinic passage."
+      - type: signal
+        text: "Generic signal clinic passage."
+      - type: signal
+        text: "Generic signal outreach passage."
+      - type: keywords
+        text: "zzzgenericnoise"
+      - type: keywords
+        text: "zzzunmatchedterm"

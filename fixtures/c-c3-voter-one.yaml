@@ -1,0 +1,8 @@
+endpoint: /deep-analysis-filter.voter-one
+contains: "lorniva"
+reply:
+  json:
+    results:
+      - { id: 1, code: callout-1c3empat, judgment: keep, reason: "E2E-C3-KEEP-REASON the nurse listens to every worry" }
+      - { id: 2, code: callout-1c3empat, judgment: keep, reason: "E2E-C3-SPLIT-KEEPCASE the clerk still acknowledges the visitor" }
+      - { id: 3, code: callout-1c3empat, judgment: remove, reason: "a menu is not a staff interaction" }

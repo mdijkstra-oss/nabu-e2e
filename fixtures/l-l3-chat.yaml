@@ -1,0 +1,8 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-L3-PLANTOOLS
+reply:
+  toolCalls:
+    - name: start_planning
+      args: { task: "E2E-L3 plan" }

@@ -1,0 +1,13 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T4-DIFF
+reply:
+  toolCalls:
+    - name: patch_callout
+      args:
+        path: t4-doc.md
+        block_id: callout-4t4aaaaa
+        operations:
+          - op: set
+            fields: { title: "T4 Replaced Title" }

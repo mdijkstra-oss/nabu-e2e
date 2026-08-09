@@ -1,0 +1,8 @@
+# Follow-up turn for d-d10-allowed-files.yaml — matches on the refusal.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D10-SETTINGS"
+  - "can only exist in: settings.hidden.md"
+reply:
+  text: "Turn finished. E2E-D10-DONE"

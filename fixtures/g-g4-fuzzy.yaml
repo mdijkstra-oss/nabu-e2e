@@ -1,0 +1,8 @@
+# The open document says "painless"; the quote says "effortless" — 9 of 10
+# tokens in order, exactly the 90% floor G4 claims for five-plus-token quotes.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-G4-FUZZY"
+reply:
+  text: "Notably she felt that “Deep focus in the morning made the code review effortless.” G4-FUZZY-REPLY-END"

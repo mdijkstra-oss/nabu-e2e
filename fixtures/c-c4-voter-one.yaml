@@ -1,0 +1,8 @@
+endpoint: /deep-analysis-filter.voter-one
+contains: "quorvane"
+reply:
+  json:
+    results:
+      - { id: 1, code: callout-1c4fairn, judgment: keep, reason: "E2E-C4-KEEPCASE-1 explicit fairness claim on the tax" }
+      - { id: 2, code: callout-1c4fairn, judgment: keep, reason: "E2E-C4-KEEPCASE-2 explicit fairness claim on the levy" }
+      - { id: 3, code: callout-1c4fairn, judgment: keep, reason: "E2E-C4-KEEPCASE-3 explicit fairness claim on the fee" }

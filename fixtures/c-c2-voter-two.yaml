@@ -1,0 +1,5 @@
+endpoint: /deep-analysis-filter.voter-two
+contains: "Flumewick item"
+reply:
+  json:
+    results: []

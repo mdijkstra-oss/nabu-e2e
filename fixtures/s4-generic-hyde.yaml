@@ -1,0 +1,25 @@
+endpoint: /generic-hyde
+contains: E2ES4QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "Generic adaptation passage one."
+      - type: direct
+        text: "Generic adaptation passage two."
+      - type: hedged
+        text: "Generic hedged adaptation passage."
+      - type: hedged
+        text: "Generic hedged routine passage."
+      - type: consequence
+        text: "Generic consequence routine passage."
+      - type: consequence
+        text: "Generic consequence diary passage."
+      - type: signal
+        text: "Generic signal adaptation passage."
+      - type: signal
+        text: "Generic signal tooling passage."
+      - type: keywords
+        text: "zzzgenericnoise"
+      - type: keywords
+        text: "zzzunmatchedterm"

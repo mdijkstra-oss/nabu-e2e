@@ -1,0 +1,7 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-C4-RUN"
+  - "melbrook"
+reply:
+  text: "Fairness pass finished. E2E-C4-DONE"

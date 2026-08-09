@@ -1,0 +1,5 @@
+# Standing boot fixture: description sync calls this when a language/corpus
+# group crosses 500 words, which per-test seeded documents can trigger.
+endpoint: /corpus-describer
+reply:
+  text: "Interview transcripts and field notes about remote work, in plain conversational English."

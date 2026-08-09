@@ -1,0 +1,17 @@
+# One reply serves both C1 dimensions; the test asserts per-dimension requests
+# via the journal, not via distinct fixtures.
+endpoint: /file-hyde
+contains: "E2E-C1-DIM"
+reply:
+  json:
+    hydes:
+      - { type: keywords, text: "zephyrblue directive council members" }
+      - { type: direct, text: "The zephyrblue directive was praised by members." }
+      - { type: direct, text: "A speaker endorses the zephyrblue directive." }
+      - { type: hedged, text: "The zephyrblue directive may deserve support." }
+      - { type: consequence, text: "Support for the zephyrblue directive grew." }
+      - { type: signal, text: "praise for the zephyrblue directive" }
+      - { type: direct, text: "Members welcomed the zephyrblue directive." }
+      - { type: hedged, text: "Some seemed to back the zephyrblue directive." }
+      - { type: consequence, text: "The zephyrblue directive was adopted." }
+      - { type: signal, text: "endorsement of the zephyrblue directive" }

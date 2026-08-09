@@ -1,0 +1,10 @@
+# Stateless pair with s12-qual-coder-done.yaml (see s10-qual-coder.yaml).
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2ES12RUN
+reply:
+  toolCalls:
+    - name: query
+      args:
+        sql: "SELECT f.file, f.text, SEMANTIC('E2ES12QUERY stance on the attendance mandate') FROM files f WHERE f.file IN (SELECT file FROM attributes WHERE type = 'policy') LIMIT 10"

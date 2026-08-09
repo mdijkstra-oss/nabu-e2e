@@ -1,0 +1,5 @@
+# E4: a marker turn whose request carries the model-visible database schema.
+endpoint: /qual-coder
+contains: ["GREETING MODE", "E2E-E4-SCHEMA-MARKER"]
+reply:
+  text: "E4-SCHEMA-REPLY-OK"

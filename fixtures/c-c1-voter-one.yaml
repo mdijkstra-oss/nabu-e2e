@@ -1,0 +1,5 @@
+endpoint: /deep-analysis-filter.voter-one
+contains: "zephyrblue"
+reply:
+  json:
+    results: []

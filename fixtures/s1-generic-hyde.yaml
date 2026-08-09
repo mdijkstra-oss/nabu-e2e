@@ -1,0 +1,25 @@
+endpoint: /generic-hyde
+contains: E2ES1QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "Generic passage one about organizational change."
+      - type: direct
+        text: "Generic passage two about slow rollouts."
+      - type: hedged
+        text: "Generic hedged passage about possible postponement."
+      - type: hedged
+        text: "Generic hedged passage about cautious boards."
+      - type: consequence
+        text: "Generic consequence passage about missed deadlines."
+      - type: consequence
+        text: "Generic consequence passage about shifted budgets."
+      - type: signal
+        text: "Generic signal passage naming delay vocabulary."
+      - type: signal
+        text: "Generic signal passage naming committee language."
+      - type: keywords
+        text: "zzzgenericnoise"
+      - type: keywords
+        text: "zzzunmatchedterm"

@@ -1,0 +1,27 @@
+# The named file's content arrives in the request; the direct angle repeats
+# s11-echo.md's exact chunk text so the echo surfaces via cosine (S11).
+endpoint: /file-hyde
+contains: E2ES11NOTE
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "E2ESEARCHCORPUS E2ES11KW Her fixed walk and email curfew replaced the old spontaneity."
+      - type: direct
+        text: "Routines took the place of chance encounters."
+      - type: hedged
+        text: "Spontaneity may have given way to routine."
+      - type: hedged
+        text: "Structure arguably replaced improvisation."
+      - type: consequence
+        text: "Days became predictable."
+      - type: consequence
+        text: "Calendars filled with fixed slots."
+      - type: signal
+        text: "Words like routine and curfew appear."
+      - type: signal
+        text: "Habit vocabulary clusters."
+      - type: keywords
+        text: "E2ES11KW"
+      - type: keywords
+        text: "zzzquietterm"

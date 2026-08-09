@@ -1,0 +1,9 @@
+# The option labels only enter the transcript with the ask call itself, so
+# this out-specifies the base fixture on the post-answer turn.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - E2E-T8-ASK
+  - "T8 Option Alpha"
+reply:
+  text: "T8-DONE"

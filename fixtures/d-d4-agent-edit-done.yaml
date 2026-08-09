@@ -1,0 +1,8 @@
+# Follow-up turn for d-d4-agent-edit.yaml.
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-D4-AGENT-EDIT"
+  - "Edited d4-agent.md"
+reply:
+  text: "Edit applied. E2E-D4-DONE"

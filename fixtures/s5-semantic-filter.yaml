@@ -1,0 +1,15 @@
+# First batch (the ten short, higher-ranked docs — all tagged E2ES5BATCH1) is
+# held for 8s; see s5-semantic-filter-fast.yaml for the second batch. The fast
+# batch must surface while this one is still in flight (S5).
+endpoint: /semantic-filter
+contains:
+  - E2ES5HL
+  - E2ES5BATCH1
+reply:
+  delayMs: 8000
+  json:
+    results:
+      - start: "a-1"
+        end: "a-1"
+        confidence: clear
+        reasonToKeep: "records the milestone"

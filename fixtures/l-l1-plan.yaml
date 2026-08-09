@@ -1,0 +1,6 @@
+endpoint: /qual-coder.planning
+contains:
+  - "GREETING MODE"
+  - E2E-L1-CHAIN
+reply:
+  text: "L1-PLAN-REPLY-ONE"

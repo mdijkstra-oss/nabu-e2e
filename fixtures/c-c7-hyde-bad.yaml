@@ -1,0 +1,8 @@
+# The failing retrieval branch: this dimension's hyde generation errors out.
+endpoint: /file-hyde
+contains: "E2E-C7-DIM-BAD"
+reply:
+  error:
+    message: "E2E-C7-HYDE-BOOM scripted retrieval failure"
+    type: e2e_boom
+    status: 500

@@ -1,0 +1,6 @@
+endpoint: /qual-coder
+contains:
+  - "GREETING MODE"
+  - "E2E-G7-OTHER"
+reply:
+  text: "From the notes, “The vending machine only accepted exact change on rainy days.” G7-REPLY-END"

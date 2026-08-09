@@ -1,0 +1,7 @@
+endpoint: /scout-filter
+contains:
+  - E2ES4FRAME
+  - E2ES4KEEPDOC
+reply:
+  json:
+    exclude: []

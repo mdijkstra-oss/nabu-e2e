@@ -1,0 +1,25 @@
+endpoint: /hyde-generator
+contains: E2ES12QUERY
+reply:
+  json:
+    hydes:
+      - type: direct
+        text: "The policy mandates attendance."
+      - type: direct
+        text: "Attendance rules were written down."
+      - type: hedged
+        text: "Attendance may be required."
+      - type: hedged
+        text: "The mandate arguably applies."
+      - type: consequence
+        text: "Offices filled on set days."
+      - type: consequence
+        text: "Badge data reflected the mandate."
+      - type: signal
+        text: "Words like mandate and attendance appear."
+      - type: signal
+        text: "Policy vocabulary clusters."
+      - type: keywords
+        text: "E2ES12KW"
+      - type: keywords
+        text: "zzzquietterm"
