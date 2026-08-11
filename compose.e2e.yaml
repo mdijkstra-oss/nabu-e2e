@@ -26,15 +26,24 @@ services:
   # service gates on preflight, and preflight gates on prompts-seed.
   # Resetting preflight's build also prevents the dragoman image build its
   # additional_contexts would otherwise force.
+  # depends_on is reset along with the build: its gate, config-check, is
+  # parked below, and compose refuses a dependency on a service no profile
+  # enables.
   preflight:
     build: !reset null
     image: alpine:3
     entrypoint: ["true"]
+    depends_on: !reset null
 
   prompts-seed:
     build: !reset null
     image: alpine:3
     entrypoint: ["true"]
+
+  # Nothing to validate: prompts-seed is a stand-in here, so the config volume
+  # this reads is empty and chancery validate fails on the absent models table.
+  config-check:
+    profiles: ["parked"]
 
   # Parked, never activated: an override cannot delete a service, and exit-0
   # stand-ins would restart forever under restart: unless-stopped.
