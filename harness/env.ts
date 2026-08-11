@@ -1,3 +1,5 @@
+import fs from "node:fs"
+import os from "node:os"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
@@ -10,6 +12,25 @@ export const selfHostedDir = path.join(nabuRoot, "nabu-self-hosted")
 
 export const COMPOSE_PROJECT = "nabu-e2e"
 export const STATE_FILE = path.join(e2eRoot, ".e2e-state.json")
+
+// Storage bind-mounts this, so it must exist before the stack boots and be
+// writable by uid 65532. Outside the checkout: the stack writes here, and a
+// path under e2eRoot would put every run's projects under version control.
+// Fixed rather than mktemp because setup, teardown and the test workers are
+// separate processes that all have to name the same directory.
+export const PROJECT_DIR = path.join(os.tmpdir(), "nabu-e2e-projects")
+
+export const resetProjectDir = (): void => {
+  fs.rmSync(PROJECT_DIR, { recursive: true, force: true })
+  fs.mkdirSync(PROJECT_DIR, { recursive: true })
+  // 0777 because the container user is not the user that created it, and
+  // on Linux nothing else would make it writable to uid 65532.
+  fs.chmodSync(PROJECT_DIR, 0o777)
+}
+
+export const removeProjectDir = (): void => {
+  fs.rmSync(PROJECT_DIR, { recursive: true, force: true })
+}
 
 export const resolveTier = (): Tier => {
   const raw = process.env.NABU_E2E_TIER ?? "stubbed"
@@ -31,6 +52,7 @@ export const baseUrl = (): string => `http://localhost:${resolvePort()}`
 export const composeEnv = (mode: Mode): Record<string, string> => {
   const env: Record<string, string> = {
     NABU_PORT: resolvePort(),
+    PROJECT_DIR,
     NABU_FRONTEND_REPO: path.join(nabuRoot, "nabu-frontend"),
     NABU_STORAGE_REPO: path.join(nabuRoot, "nabu-storage"),
   }

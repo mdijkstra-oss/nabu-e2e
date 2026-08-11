@@ -1,32 +1,12 @@
-import { COMPOSE_PROJECT } from "./env"
-import { exec } from "./compose"
+import fs from "node:fs"
+import path from "node:path"
+import { PROJECT_DIR } from "./env"
 
-// Storage's HTTP surface has no file-read endpoint and its image is scratch
-// with no shell, so on-disk claims read the volume through a one-shot
-// container instead.
-export const readVolumeFile = async (relPath: string): Promise<string> => {
-  const { stdout } = await exec("docker", [
-    "run",
-    "--rm",
-    "-v",
-    `${COMPOSE_PROJECT}_projects:/data:ro`,
-    "alpine:3",
-    "cat",
-    `/data/${relPath}`,
-  ])
-  return stdout
-}
+// Storage's HTTP surface has no file-read endpoint, so on-disk claims read the
+// bind-mounted host directory the container writes into. Storage renames a
+// complete file into place, so a plain read never catches one mid-write.
+export const readVolumeFile = async (relPath: string): Promise<string> =>
+  fs.promises.readFile(path.join(PROJECT_DIR, relPath), "utf8")
 
-export const listVolumeDir = async (relPath: string): Promise<string[]> => {
-  const { stdout } = await exec("docker", [
-    "run",
-    "--rm",
-    "-v",
-    `${COMPOSE_PROJECT}_projects:/data:ro`,
-    "alpine:3",
-    "ls",
-    "-1a",
-    `/data/${relPath}`,
-  ])
-  return stdout.split("\n").filter((l) => l && l !== "." && l !== "..")
-}
+export const listVolumeDir = async (relPath: string): Promise<string[]> =>
+  fs.promises.readdir(path.join(PROJECT_DIR, relPath))

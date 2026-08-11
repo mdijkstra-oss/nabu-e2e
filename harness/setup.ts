@@ -1,5 +1,12 @@
 import fs from "node:fs"
-import { baseUrl, modeForTier, requiredSiblings, resolveTier, type Mode } from "./env"
+import {
+  baseUrl,
+  modeForTier,
+  requiredSiblings,
+  resetProjectDir,
+  resolveTier,
+  type Mode,
+} from "./env"
 import { checkComposeVersion, compose, teardownCommand } from "./compose"
 import { writeState } from "./state"
 
@@ -72,6 +79,10 @@ export default async function globalSetup(): Promise<void> {
   // Leftovers from a kept stack or a crashed run would otherwise leak state
   // into this run's supposedly fresh volumes.
   await compose(mode, ["down", "-v", "--remove-orphans"], 300_000).catch(() => {})
+
+  // Before build, not before up: compose refuses to interpolate the storage
+  // mount at all while the directory is absent.
+  resetProjectDir()
 
   console.log(`[harness] building images (${mode} mode)...`)
   await compose(mode, ["build"], BUILD_TIMEOUT_MS)

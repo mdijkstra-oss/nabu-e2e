@@ -50,9 +50,13 @@ test(
     )) as { id: string }[]
     expect(row.id).toMatch(/^annotation-[0-9][a-z0-9]{7}$/)
 
-    // The generated id is what landed in the file, too.
-    const onDisk = await readVolumeFile(`${project.id}/d9-doc.md`).catch(() => "")
-    expect(JSON.stringify(onDisk)).toContain("E2E-D9-FORMAT-R")
+    // The generated id is what landed in the file, too. Polled: the write is
+    // debounced, so it lands after the row is already queryable.
+    await expect
+      .poll(async () => await readVolumeFile(`${project.id}/d9-doc.md`).catch(() => ""), {
+        timeout: 30_000,
+      })
+      .toContain("E2E-D9-FORMAT-R")
   }
 )
 

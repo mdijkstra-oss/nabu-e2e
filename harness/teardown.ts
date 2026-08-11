@@ -1,4 +1,4 @@
-import { modeForTier, resolveTier } from "./env"
+import { modeForTier, removeProjectDir, resolveTier } from "./env"
 import { compose, teardownCommand } from "./compose"
 
 export default async function globalTeardown(): Promise<void> {
@@ -9,4 +9,5 @@ export default async function globalTeardown(): Promise<void> {
     return
   }
   await compose(mode, ["down", "-v", "--remove-orphans"], 300_000)
+  removeProjectDir()
 }

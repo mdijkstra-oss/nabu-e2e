@@ -11,6 +11,11 @@ export NABU_FRONTEND_REPO="$NABU_ROOT/nabu-frontend"
 export NABU_STORAGE_REPO="$NABU_ROOT/nabu-storage"
 export NABU_E2E_FAKE_CONTEXT="$E2E_ROOT/fake-model-server"
 export NABU_E2E_FIXTURES="$E2E_ROOT/fixtures"
+# Must match harness/env.ts: node's os.tmpdir() drops the trailing slash
+# macOS leaves on TMPDIR, and storage refuses to mount a missing directory.
+TMPROOT="${TMPDIR:-/tmp}"
+export PROJECT_DIR="${TMPROOT%/}/nabu-e2e-projects"
+mkdir -p "$PROJECT_DIR"
 
 exec docker compose -p nabu-e2e \
   -f "$NABU_ROOT/nabu-self-hosted/compose.yaml" \

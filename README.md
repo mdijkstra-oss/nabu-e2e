@@ -25,11 +25,13 @@ npm install && npx playwright install chromium
 | `make test` | CI run: fresh boot, `stack`+`stubbed` projects, full teardown |
 | `make ux` | Playwright's UI runner against the running stack, booting one if needed |
 | `make test-fast` | Headless run against the running stack, booting one if needed |
-| `make up` / `make down` | Keep a stack running / remove it with its volumes |
+| `make up` / `make down` | Keep a stack running / remove it with its volumes and project files |
 | `make fixtures` | Reload the fake server's fixtures after editing `fixtures/*.yaml` |
 | `make real` | The 🔌 tier; `OPENAI_API_KEY` from your environment, else chancery's `.env.local` |
 
 The stack publishes one port, `NABU_PORT` (default 8099), and runs under the compose project name `nabu-e2e`, so a dev stack running from `nabu-self-hosted` on its defaults is untouched.
+
+Project files go to `nabu-e2e-projects` in the system temp directory, emptied at the start of every run and removed at the end. Tests that assert on disk read it directly, and each test seeds the project it needs over HTTP, so nothing has to be there beforehand.
 
 > [!WARNING]
 > `make ux` and `make test-fast` only check that the port answers; if a 🔌 stack is still up from `make real`, run `make down` first or they will test against it.

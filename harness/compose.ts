@@ -1,6 +1,6 @@
 import { execFile } from "node:child_process"
 import path from "node:path"
-import { COMPOSE_PROJECT, composeEnv, e2eRoot, selfHostedDir, type Mode } from "./env"
+import { COMPOSE_PROJECT, composeEnv, e2eRoot, PROJECT_DIR, selfHostedDir, type Mode } from "./env"
 
 const MIN_COMPOSE = [2, 24, 4]
 
@@ -53,5 +53,7 @@ export const checkComposeVersion = async (): Promise<void> => {
   }
 }
 
+// PROJECT_DIR is prefixed because compose will not interpolate the storage
+// mount without it, so the bare command would fail when pasted.
 export const teardownCommand = (mode: Mode): string =>
-  ["docker", ...composeArgs(mode, "down", "-v", "--remove-orphans")].join(" ")
+  [`PROJECT_DIR=${PROJECT_DIR}`, "docker", ...composeArgs(mode, "down", "-v", "--remove-orphans")].join(" ")
