@@ -21,27 +21,29 @@ const BASE_COMPANIONS = [
 // One distinctive phrase per base-corpus file, to pin that none of them re-embed.
 const BASE_PHRASES = ["Recurring themes", "graphic designer", "support engineer"]
 
-// Chunk geometry (constants.ts): 1000-char windows, 800-char stride, sentence
-// snap within 300. The builders below place edits relative to those boundaries.
+// Chunk geometry: boundaries fall between sentences and are chosen by hashing the text
+// before them, so a chunk count follows from a document's length only on average — a unit
+// runs about 900 characters. The builders below are sized to clear the counts these tests
+// need with room to spare, rather than to land on an exact boundary.
 
 const E1_TOKEN = "kaleidowork-e1"
-// ~3100 chars -> 4 windows; a coda typed at the end lands only in the last one.
+// ~5600 chars -> 4 units; a coda typed at the end lands only in the last one.
 const e1Doc = (): string => {
   const head = `The ${E1_TOKEN} anchor E2E-E1-HEAD-ANCHOR opens this document plainly.`
-  return `${padProse(E1_TOKEN, head, 2950)} The ${E1_TOKEN} tail closes the document.`
+  return `${padProse(E1_TOKEN, head, 5500)} The ${E1_TOKEN} tail closes the document.`
 }
 
 const E2_TOKEN = "kaleidowork-e2"
-// ~6380 chars -> 8 windows; the mid paragraph spans ~[3300, 4180], which
-// crosses two window interiors and at most one snapped boundary: 2-3 chunks.
+// ~10100 chars -> 7 units; the mid paragraph sits around [5000, 5700], well
+// inside the document, so an edit to it touches the units around it and no more.
 const e2Doc = (tok: string): string => {
   const head = `The ${E2_TOKEN} anchor E2E-E2-HEAD-ANCHOR opens this document plainly.`
-  const before = padProse(E2_TOKEN, head, 3300)
+  const before = padProse(E2_TOKEN, head, 5000)
   const mid = Array.from(
     { length: 10 },
     (_, i) => `The ${E2_TOKEN} middle sentence ${i} states ${tok} for the embedding suite.`
   ).join(" ")
-  const after = padProse(E2_TOKEN, `${before} ${mid}`, 6300, 50)
+  const after = padProse(E2_TOKEN, `${before} ${mid}`, 10000, 50)
   return `${after} The ${E2_TOKEN} anchor E2E-E2-TAIL-ANCHOR closes this document plainly.`
 }
 
@@ -144,9 +146,11 @@ test(
   { tag: ["@E2"] },
   async ({ page, project }) => {
     const doc = e2Doc("E2E-E2-MID-ORIG!")
+    // The edit has to land in the middle of the document, with whole units either side of
+    // it, or "only the units around it re-embed" is not what the test is measuring.
     const idx = doc.indexOf("E2E-E2-MID-ORIG!")
-    expect(idx).toBeGreaterThan(3200)
-    expect(idx).toBeLessThan(3500)
+    expect(idx).toBeGreaterThan(doc.length * 0.4)
+    expect(idx).toBeLessThan(doc.length * 0.6)
     // The e-e2-edit.yaml fixture anchors on these exact sentences.
     expect(doc).toContain("The kaleidowork-e2 middle sentence 0 states E2E-E2-MID-ORIG! for the embedding suite.")
     expect(doc).toContain("The kaleidowork-e2 middle sentence 9 states E2E-E2-MID-ORIG! for the embedding suite.")

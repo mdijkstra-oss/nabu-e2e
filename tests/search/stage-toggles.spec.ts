@@ -9,13 +9,15 @@ import {
   stringifyBody,
 } from "../helpers/search"
 
-// Trim keeps ~30 words of context around a kept range, so the flanking
-// sentences are long and carry their markers at the far ends — outside any
-// context the trim stage may keep.
+// Trim keeps ~30 words of context around a kept range, so the flanking sentences carry
+// their markers at the far ends — outside any context the trim stage may keep. The whole
+// document is one unit, which is what makes the first hit the one the filter judged: with
+// two units nothing decides which ranks first, because the fake's vectors only agree when
+// the text does.
 const DOC =
-  "E2ES9FIRST the survey planning stretched across several weeks while volunteers gathered maps, borrowed tools, compared notes from earlier seasons, and slowly agreed on a fair rotation that would keep every plot covered without exhausting anyone during the long opening stretch of the growing season this year. " +
+  "E2ES9FIRST the survey took weeks to plan, with volunteers fetching maps, borrowing tools, reading through notes kept from earlier seasons, and arguing gently towards a rotation that covered every plot fairly. " +
   "Volunteers E2ES9SECOND catalogued the beds thoroughly. " +
-  "Afterwards the records were copied into three ledgers, checked against photographs, argued over during two long meetings, annotated with weather remarks, and finally shelved in the little cabinet beside the greenhouse door where nobody would look at them again until the next spring E2ES9THIRD. " +
+  "Afterwards the records were copied into three ledgers, checked against photographs, argued over during two long meetings, annotated with weather remarks, and shelved in the cabinet by the greenhouse door E2ES9THIRD. " +
   "E2ESEARCHCORPUS E2ES9KW closing line."
 
 const s9FilterCount = async (project: { journal: () => Promise<{ path: string; body: unknown; seq: number; fixture: string | null; projectId: string | null }[]> }) =>
@@ -82,7 +84,7 @@ test(
   { tag: ["@S9"] },
   async ({ page, project }) => {
     const sentences: string[] = []
-    for (let i = 1; i <= 108; i++) sentences.push(capSentence(i))
+    for (let i = 1; i <= 240; i++) sentences.push(capSentence(i))
     await project.seed("s9-cap.md", "E2ESEARCHCORPUS " + sentences.join(" ") + "\n")
     await project.seed(
       "settings.hidden.md",

@@ -32,6 +32,12 @@ const C1_DOC = [
   "The gardening group reported steady progress on the shared vegetable beds.",
   "A brief update followed on the repairs to the roof above the north stairs.",
   "The meeting closed with a reminder about the volunteer rota for the fair.",
+  // Padding, so no unit reaches from the zephyrblue lines into the appendix: a boundary is
+  // decided by the text around it, and a candidate carries whatever its unit holds.
+  "Apologies were recorded for the two members who could not attend in person.",
+  "The date of the next ordinary meeting was confirmed without any objection.",
+  "A note of thanks was minuted for the caretaker who unlocked the hall early.",
+  "No other business was raised and the chair thanked everyone for attending.",
   "The appendix that follows records gorseplum catering costs for the retreat.",
   "Nobody expects the gorseplum appendix to be read during ordinary meetings.",
 ].join("\n")

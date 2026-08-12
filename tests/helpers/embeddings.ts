@@ -51,16 +51,19 @@ export const readCompanion = async (
  * the probe yields a value. The clock jump only fires page timers; the fetches
  * they trigger run on the real network, hence the short real-time grace.
  */
+// Advancing the clock releases the debounce; the request it releases still needs real time
+// to go out and come back, and a boot that embeds several chunks needs more of it than one
+// that embeds two — especially with the other workers busy.
 export const advanceUntil = async <T>(
   page: Page,
   probe: () => Promise<T | undefined | false | null>,
-  { stepMs = 6000, tries = 15 }: { stepMs?: number; tries?: number } = {}
+  { stepMs = 6000, tries = 30, settleMs = 1000 }: { stepMs?: number; tries?: number; settleMs?: number } = {}
 ): Promise<T> => {
   for (let i = 0; i < tries; i++) {
     const value = await probe()
     if (value) return value
     await page.clock.fastForward(stepMs)
-    await new Promise((r) => setTimeout(r, 400))
+    await new Promise((r) => setTimeout(r, settleMs))
   }
   throw new Error(`condition not reached after ${tries} clock advances of ${stepMs}ms`)
 }
@@ -69,9 +72,9 @@ const filler = (token: string, i: number): string =>
   `The ${token} log entry number ${String(i).padStart(2, "0")} records steady rhythms and small changes in the remote studio today.`
 
 /**
- * Appends ~108-char sentences until the prose reaches minLength. Short sentences
- * keep every chunk boundary within the chunker's sentence-snap tolerance, so a
- * same-length edit leaves all windows outside it byte-identical.
+ * Appends ~108-char sentences until the prose reaches minLength. Every boundary falls
+ * between two of them, so a same-length edit inside one sentence leaves the units around
+ * it byte-identical.
  */
 export const padProse = (token: string, prefix: string, minLength: number, startIndex = 0): string => {
   let out = prefix

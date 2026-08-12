@@ -64,12 +64,12 @@ test(
   "adjacent high-scoring chunks merge and re-slice so passages cross chunk boundaries whole",
   { tag: ["@S4"] },
   async ({ page, project }) => {
-    // ~1700 chars -> two overlapping chunks; sentence 9 sits in the overlap
-    // zone around byte 800-1000. Naive concatenation would repeat it; a
-    // merged region re-sliced from the source carries it exactly once.
+    // ~1360 chars -> two chunks, the second starting inside the first because of the
+    // overlap. Sentence 12 opens that shared stretch, so naive concatenation would repeat
+    // it; a merged region re-sliced from the source carries it exactly once.
     const sentences: string[] = []
-    for (let i = 1; i <= 16; i++) {
-      const marker = i === 1 ? "E2ES4HEAD" : i === 9 ? "E2ES4MID" : i === 16 ? "E2ES4TAIL" : "today"
+    for (let i = 1; i <= 14; i++) {
+      const marker = i === 1 ? "E2ES4HEAD" : i === 12 ? "E2ES4MID" : i === 14 ? "E2ES4TAIL" : "today"
       sentences.push(mergeSentence(i, marker))
     }
     await project.seed("s4-merge.md", "E2ESEARCHCORPUS " + sentences.join(" ") + "\n")
