@@ -85,10 +85,12 @@ test(
     await expect(chart.getByText("Figure 1: E2E D2 chart")).toBeVisible()
     await expect(page.getByText('"query"')).toHaveCount(0)
 
-    // Attributes: its visual form is the header date; the JSON block stays hidden.
+    // Attributes: its visual form is the header date, and the block itself stays hidden —
+    // as does every other block the app stores in the document, the region detector's
+    // among them. What matters is that none of them is rendered, not how many there are.
     await expect(page.getByText("Mar 5, 2024")).toBeVisible()
-    await expect(page.locator(".hidden-block")).toHaveCount(1)
-    await expect(page.locator(".hidden-block")).toBeHidden()
+    await expect(page.locator(".hidden-block")).not.toHaveCount(0)
+    await expect(page.locator(".hidden-block:visible")).toHaveCount(0)
   }
 )
 

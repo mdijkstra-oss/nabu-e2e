@@ -18,9 +18,13 @@ const parseSchemaMessage = (content: string): DescribedTable[] => {
     }))
 }
 
-// The files table's hash and embedding columns are deliberately hidden from the
-// model (documented in 01); the tables themselves must still match exactly.
-const HIDDEN_COLUMNS: Record<string, string[]> = { files: ["hash", "embedding"] }
+// Columns a block declares as hiddenColumns never reach the model — files keeps its hash
+// and embedding out (documented in 01), charts keeps the spec object out. The tables
+// themselves must still match exactly.
+const HIDDEN_COLUMNS: Record<string, string[]> = {
+  files: ["hash", "embedding"],
+  charts: ["spec"],
+}
 
 test(
   "the DDL sent to the agent names exactly the tables that exist",
