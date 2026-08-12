@@ -1,0 +1,12 @@
+# Standing boot fixture: region detection runs over every seeded document, once per
+# kind per scan unit, without being asked. No contains, so it answers every
+# /region-finder request a test has not answered more specifically — and any fixture
+# carrying a `contains` outranks it.
+#
+# Empty results on purpose. A test that wants regions supplies its own fixture; every
+# other test sees the corpus it would have seen before regions existed, and no
+# /region-marker call is issued at all, since marking is per hit.
+endpoint: /region-finder
+reply:
+  json:
+    results: []
