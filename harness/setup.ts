@@ -72,8 +72,19 @@ export default async function globalSetup(): Promise<void> {
   if (missing.length > 0) {
     throw new Error(`missing checkouts the ${mode} mode builds from:\n  ${missing.join("\n  ")}`)
   }
-  if (mode === "real" && !process.env.OPENAI_API_KEY) {
-    throw new Error("real mode needs OPENAI_API_KEY: the openai preset runs every model tier on it")
+  // An explicit MODELS override picks its own providers; dragoman names any
+  // missing key at first request. OPENAI_API_KEY stays required either way:
+  // the embeddings service runs on it and preflight gates the stack on it.
+  if (mode === "real") {
+    const required = process.env.MODELS
+      ? ["OPENAI_API_KEY"]
+      : ["OPENAI_API_KEY", "GEMINI_API_KEY", "ANTHROPIC_API_KEY"]
+    const missingKeys = required.filter((k) => !process.env[k])
+    if (missingKeys.length > 0) {
+      throw new Error(
+        `real mode needs ${missingKeys.join(", ")}: models.multi.yaml runs on gemini and anthropic, embeddings on openai`
+      )
+    }
   }
 
   // Leftovers from a kept stack or a crashed run would otherwise leak state

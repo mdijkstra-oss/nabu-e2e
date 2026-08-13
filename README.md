@@ -27,7 +27,7 @@ npm install && npx playwright install chromium
 | `make test-fast` | Headless run against the running stack, booting one if needed |
 | `make up` / `make down` | Keep a stack running / remove it with its volumes and project files |
 | `make fixtures` | Reload the fake server's fixtures after editing `fixtures/*.yaml` |
-| `make real` | The 🔌 tier; `OPENAI_API_KEY` from your environment, else chancery's `.env.local` |
+| `make real` | The 🔌 tier on `models.multi.yaml`; keys from your environment, else `.env.local` |
 
 The stack publishes one port, `NABU_PORT` (default 8099), and runs under the compose project name `nabu-e2e`, so a dev stack running from `nabu-self-hosted` on its defaults is untouched.
 

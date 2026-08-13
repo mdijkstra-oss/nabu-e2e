@@ -8,7 +8,7 @@ help:
 	@echo "make test-fast  - run stack+stubbed against the running stack (boots one if needed)"
 	@echo "make ux         - Playwright UI runner against the running stack (boots one if needed)"
 	@echo "make fixtures   - reload fake-model-server fixtures after editing fixtures/*.yaml"
-	@echo "make real       - real tier: unmodified stack, real providers (key from chancery/.env.local)"
+	@echo "make real       - real tier: unmodified stack, models.multi.yaml (keys from .env.local)"
 	@echo "make down       - tear the stack down, volumes included"
 
 # Fresh boot, full run, teardown — the one command for CI.
@@ -34,9 +34,10 @@ fixtures:
 down:
 	./scripts/compose.sh down -v --remove-orphans
 
-# OPENAI_API_KEY from the environment wins; otherwise chancery's .env.local.
+# Keys already in the environment win; if any is missing, .env.local
+# supplies them all.
 real:
-	@set -a; [ -n "$$OPENAI_API_KEY" ] || . $(abspath ../../chancery/.env.local); set +a; \
+	@set -a; { [ -n "$$OPENAI_API_KEY" ] && [ -n "$$GEMINI_API_KEY" ] && [ -n "$$ANTHROPIC_API_KEY" ]; } || . ./.env.local; set +a; \
 	NABU_E2E_TIER=real \
 	CHANCERY_REPO=$(abspath ../../chancery) \
 	DRAGOMAN_REPO=$(abspath ../../dragoman) \
