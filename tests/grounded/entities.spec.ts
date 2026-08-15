@@ -12,7 +12,7 @@ import {
 
 test(
   "a resolvable callout id and filename render as pills with the entity's name and color, linked to their definitions",
-  { tag: ["@G1"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("codebook.md", CODEBOOK_DOC)
     await project.seed("settings.hidden.md", SETTINGS_DOC)
@@ -42,7 +42,7 @@ test(
 
 test(
   "a resolvable #tag renders as a pill with the tag's name and color, unlinked — its definition is hidden",
-  { tag: ["@G1"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("codebook.md", CODEBOOK_DOC)
     await project.seed("settings.hidden.md", SETTINGS_DOC)
@@ -62,7 +62,7 @@ test(
 
 test(
   "an id that resolves to nothing is left exactly as written and never linked",
-  { tag: ["@G2"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.open(page)
 
@@ -80,7 +80,7 @@ test(
 
 test(
   "a filename that resolves to nothing keeps its text as written, never links, and is styled as missing",
-  { tag: ["@G2"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.open(page)
 
@@ -96,7 +96,7 @@ test(
 
 test(
   "a redundant name next to its id is absorbed into a single link",
-  { tag: ["@G3"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("codebook.md", CODEBOOK_DOC)
     await project.open(page)

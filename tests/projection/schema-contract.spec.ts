@@ -28,7 +28,7 @@ const HIDDEN_COLUMNS: Record<string, string[]> = {
 
 test(
   "the DDL sent to the agent names exactly the tables that exist",
-  { tag: ["@P4"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.open(page)
 

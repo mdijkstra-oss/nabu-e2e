@@ -1,6 +1,5 @@
 import { defineConfig, devices } from "@playwright/test"
 import { baseUrl } from "./harness/env"
-import { labelsForTier, tagRegex } from "./harness/claims"
 
 export default defineConfig({
   testDir: "./tests",
@@ -11,7 +10,7 @@ export default defineConfig({
   workers: process.env.CI ? 2 : 4,
   timeout: 90_000,
   expect: { timeout: 15_000 },
-  reporter: [["list"], ["./reporter/coverage.ts"]],
+  reporter: [["list"]],
   use: {
     baseURL: baseUrl(),
     trace: "retain-on-failure",
@@ -20,15 +19,15 @@ export default defineConfig({
   projects: [
     {
       name: "stack",
-      grep: tagRegex(labelsForTier("stack")),
+      grep: /@stack\b/,
     },
     {
       name: "stubbed",
-      grep: tagRegex(labelsForTier("stubbed"), ["walking skeleton"]),
+      grep: /@stubbed\b/,
     },
     {
       name: "real",
-      grep: tagRegex(labelsForTier("real"), ["@smoke"]),
+      grep: /@real\b/,
     },
   ],
 })

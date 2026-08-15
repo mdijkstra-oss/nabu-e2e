@@ -4,7 +4,7 @@ import { bootedTier, expect, waitForBoot } from "./helpers/fixtures"
 // Pins spec.md's "What must not change": the unmodified compose file with
 // real providers serves the app and answers a chat message. @smoke puts it
 // in the real project without claiming a checkbox.
-test("unmodified stack serves and answers a chat message @smoke", async ({ page }) => {
+test("unmodified stack serves and answers a chat message", { tag: ["@real"] }, async ({ page }) => {
   // Selecting --project real does not select the harness mode; a real-tier
   // test against an override stack would "verify" the wrong stack, so this
   // fails loud instead of skipping.

@@ -18,7 +18,7 @@ const MESSY = [
 
 const NORMALIZED = "# Y6 messy\n\nline with trailing\n* alpha\n* beta\n\ntail\n"
 
-test("a file pushed by the server lands normalized exactly like a local write", { tag: ["@Y6"] }, async ({ page, project }) => {
+test("a file pushed by the server lands normalized exactly like a local write", { tag: ["@stack"] }, async ({ page, project }) => {
   await page.context().grantPermissions(["clipboard-read", "clipboard-write"])
   // Seeded raw through the storage API: the app only ever sees it arrive over
   // the websocket, so whatever "Copy raw" shows is what the sync applied.
@@ -39,7 +39,7 @@ test("a file pushed by the server lands normalized exactly like a local write", 
   expect(raw).not.toContain("\n\n\n")
 })
 
-test("a corrupting server write throws and never lands in the store", { tag: ["@Y6"] }, async ({ page, project }) => {
+test("a corrupting server write throws and never lands in the store", { tag: ["@stack"] }, async ({ page, project }) => {
   const corruptionErrors: string[] = []
   page.on("console", (msg) => {
     if (msg.type() === "error" && msg.text().includes("[file-store]")) {

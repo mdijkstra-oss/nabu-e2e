@@ -11,7 +11,7 @@ const DOC =
 
 test(
   "a result carries its file and can be followed back to the passage",
-  { tag: ["@S8"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("s8-doc.md", DOC + "\n")
     await project.seed(

@@ -2,7 +2,7 @@ import { test, expect } from "../helpers/fixtures"
 import { drainBootWrites, typeIntoEditor } from "../helpers/sync"
 import { listVolumeDir, readVolumeFile } from "../../harness/volume"
 
-test("the project directory on disk is plain markdown", { tag: ["@Y8"] }, async ({ page, project }) => {
+test("the project directory on disk is plain markdown", { tag: ["@stack"] }, async ({ page, project }) => {
   await project.open(page)
   await drainBootWrites(page)
 

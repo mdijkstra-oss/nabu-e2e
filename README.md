@@ -1,12 +1,14 @@
 # nabu-e2e
 
-End-to-end tests for the behavior claims in [frontend-behavior-claims.md](../frontend-behavior-claims.md): each checkbox there is backed by Playwright tests that drive the self-hosted nabu stack in docker.
+Playwright tests driving the self-hosted nabu stack in docker.
 
-Every claim carries a tier marker that decides what its tests run against:
+Every test carries a tier tag that decides what it runs against:
 
-- 💾 `stack` — the docker stack alone, no model in the path
-- 🎭 `stubbed` — model and embeddings calls answered by a fake server replaying fixture files
-- 🔌 `real` — the unmodified stack with real providers; needs API keys
+- `@stack` — the docker stack alone, no model in the path
+- `@stubbed` — model and embeddings calls answered by a fake server replaying fixture files
+- `@real` — the unmodified stack with real providers; needs API keys
+
+The tag sits on the test and nothing derives it, so what a test needs is visible where the test is.
 
 ## Prerequisites
 
@@ -34,17 +36,15 @@ The stack publishes one port, `NABU_PORT` (default 8099), and runs under the com
 Project files go to `nabu-e2e-projects` in the system temp directory, emptied at the start of every run and removed at the end. Tests that assert on disk read it directly, and each test seeds the project it needs over HTTP, so nothing has to be there beforehand.
 
 > [!WARNING]
-> `make ux` and `make test-fast` only check that the port answers; if a 🔌 stack is still up from `make real`, run `make down` first or they will test against it.
+> `make ux` and `make test-fast` only check that the port answers; if a `@real` stack is still up from `make real`, run `make down` first or they will test against it.
 
 ## Selecting tests
 
-Every test carries its claim label as a tag, so one label runs the tests behind one checkbox:
+Each Playwright project greps its tier tag. Run one tier, or narrow further by title:
 
 ```sh
-NABU_E2E_REUSE=1 npx playwright test --grep @E1
+NABU_E2E_REUSE=1 npx playwright test --grep @stack
 ```
-
-Every run ends with a per-claim coverage report — `pass`, `fail`, or `untested` per claim of the tiers that ran. An unfiltered run exits nonzero when any of its claims is `untested`; filtered runs report only the claims the filter touched.
 
 ## Environment
 
@@ -57,4 +57,4 @@ Every run ends with a per-claim coverage report — `pass`, `fail`, or `untested
 
 ## Next: writing tests
 
-[docs/test-authoring.md](docs/test-authoring.md) covers adding claim tests: the per-test project fixture, fixture files for the fake model server and the matching rules that keep parallel runs safe, and how timing-sensitive claims are driven. The component contracts live in [docs/specs/2026-08-08-01-claims-e2e-suite/](docs/specs/2026-08-08-01-claims-e2e-suite/).
+[docs/test-authoring.md](docs/test-authoring.md) covers adding tests: the per-test project fixture, fixture files for the fake model server and the matching rules that keep parallel runs safe, and how timing-sensitive behavior is driven. The component contracts live in [docs/specs/2026-08-08-01-claims-e2e-suite/](docs/specs/2026-08-08-01-claims-e2e-suite/).

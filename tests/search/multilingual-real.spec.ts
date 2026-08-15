@@ -6,7 +6,7 @@ import { hitLocator, settingsWithSearches } from "../helpers/search"
 // test hook — assertions stay at the UI.
 test(
   "a mixed-language corpus is searchable per subject in each of its own languages",
-  { tag: ["@S2"] },
+  { tag: ["@real"] },
   async ({ page, project }) => {
     expect(bootedTier(), "stack booted in override mode; run with NABU_E2E_TIER=real").toBe("real")
 

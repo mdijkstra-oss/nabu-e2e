@@ -31,7 +31,7 @@ const S1_GENERIC_EMBEDDABLE_SAMPLE = "Generic hedged passage about possible post
 
 test(
   "semantic search expands the intent into hyde passages across five angles, embedded and searched independently",
-  { tag: ["@S1"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("s1-vector.md", S1_VECTOR_DOC + "\n")
     await project.seed("s1-keyword.md", S1_KEYWORD_DOC + "\n")
@@ -94,7 +94,7 @@ const S3_ONE_DOC = "E2ESEARCHCORPUS E2ES3BOTH A single reviewer strongly objecte
 
 test(
   "vector and full-text lists fuse by reciprocal rank; many-angle chunk outranks a strong single-angle chunk",
-  { tag: ["@S3"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("s3-many.md", S3_MANY_DOC + "\n")
     await project.seed("s3-one.md", S3_ONE_DOC + "\n")

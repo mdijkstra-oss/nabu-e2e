@@ -2,7 +2,7 @@ import { expect, nabuQuery, test } from "./helpers/fixtures"
 
 // Untagged on purpose: this pins the wiring, not a claim, and the coverage
 // report ignores untagged tests.
-test("walking skeleton", async ({ page, project }) => {
+test("walking skeleton", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await page.locator('textarea[name="chat-message"]').fill("Please echo E2E-SKELETON-MARKER back to me")

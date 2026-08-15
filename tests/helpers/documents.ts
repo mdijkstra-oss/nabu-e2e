@@ -25,6 +25,13 @@ export const openDocument = async (
   await waitForBoot(page)
 }
 
+/** Paste through the browser's real clipboard, the way a user's Cmd/Ctrl+V does. */
+export const pasteMarkdown = async (page: Page, markdown: string): Promise<void> => {
+  await page.context().grantPermissions(["clipboard-read", "clipboard-write"])
+  await page.evaluate((text) => navigator.clipboard.writeText(text), markdown)
+  await page.keyboard.press("ControlOrMeta+V")
+}
+
 export { sendChat } from "./chat"
 
 export const waitForReply = (page: Page, marker: string): Promise<void> =>

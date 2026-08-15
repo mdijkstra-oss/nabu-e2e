@@ -6,7 +6,7 @@ const D9_PROSE = "# D9 doc\n\nThe participant described their routine in detail.
 
 test(
   "a landed write shows up as typed entries in the session mutation timeline",
-  { tag: ["@D8"] },
+  { tag: ["@stack"] },
   async ({ page, project }) => {
     await project.seed("d8-doc.md", "# D8 doc\n\nThe team runs a daily video standup.\n")
     await openDocument(page, project, "d8-doc.md")
@@ -24,7 +24,7 @@ test(
 
 test(
   "a new record gets an id in the strict <prefix>-[0-9][a-z0-9]{7} format",
-  { tag: ["@D9"] },
+  { tag: ["@stack"] },
   async ({ page, project }) => {
     await project.seed("d9-doc.md", D9_PROSE)
     await openDocument(page, project, "d9-doc.md")
@@ -62,7 +62,7 @@ test(
 
 test(
   "the same record written with different field orders is normalized to one shape",
-  { tag: ["@D9"] },
+  { tag: ["@stack"] },
   async ({ page, project }) => {
     await project.seed("d9-a.md", D9_PROSE)
     await project.seed("d9-b.md", D9_PROSE)
@@ -93,7 +93,7 @@ test(
 
 test(
   "a block type with allowedFiles is refused outside its file",
-  { tag: ["@D10"] },
+  { tag: ["@stack"] },
   async ({ page, project }) => {
     await project.seed("d10-doc.md", "# D10 doc\n\nOrdinary prose here.\n")
     await openDocument(page, project, "d10-doc.md")

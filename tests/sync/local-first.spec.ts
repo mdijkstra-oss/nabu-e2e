@@ -1,7 +1,7 @@
 import { test, expect, nabuQuery } from "../helpers/fixtures"
 import { captureCommands, drainBootWrites, editor, typeIntoEditor } from "../helpers/sync"
 
-test("typing renders locally and SQL answers without a storage round trip", { tag: ["@Y1"] }, async ({ page, project }) => {
+test("typing renders locally and SQL answers without a storage round trip", { tag: ["@stack"] }, async ({ page, project }) => {
   await project.open(page)
   await drainBootWrites(page)
 

@@ -49,7 +49,7 @@ const e2Doc = (tok: string): string => {
 
 test(
   "a settled edit re-embeds only the changed chunks and writes the companion beside the source",
-  { tag: ["@E1"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     // Sorts before the base corpus, so the project index opens it in the editor.
     await project.seed("a-e1-notes.md", e1Doc())
@@ -143,7 +143,7 @@ test(
 
 test(
   "one edited paragraph re-embeds only the two or three overlapping chunks",
-  { tag: ["@E2"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     const doc = e2Doc("E2E-E2-MID-ORIG!")
     // The edit has to land in the middle of the document, with whole units either side of
@@ -224,7 +224,7 @@ test(
 
 test(
   "companions and hidden files never get companions of their own",
-  { tag: ["@E3"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed(
       "decoy.hidden.md",
@@ -282,7 +282,7 @@ test(
 
 test(
   "chunk rows carry the source document's path and hash/embedding stay out of the model's schema",
-  { tag: ["@E4"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.open(page)
 
@@ -342,7 +342,7 @@ test(
 
 test(
   "a changed embeddings width is detected and the corpus re-embeds",
-  { tag: ["@E5"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     test.setTimeout(300_000)
     await project.open(page)
@@ -390,7 +390,7 @@ test(
 
 test(
   "a changed embeddings model goes undetected and nothing re-embeds",
-  { tag: ["@E6"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     test.setTimeout(240_000)
     await project.open(page)

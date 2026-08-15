@@ -10,7 +10,7 @@ interface Frame {
 
 const asText = (m: string | Buffer): string => (typeof m === "string" ? m : m.toString())
 
-test("a project loads as a SyncMeta count followed by WriteFile commands sorted by name", { tag: ["@Y5"] }, async ({ page, project }) => {
+test("a project loads as a SyncMeta count followed by WriteFile commands sorted by name", { tag: ["@stack"] }, async ({ page, project }) => {
   // Names chosen to sort before and after the seeded corpus.
   await project.seed("0-first.md", "# First\n\nSorts before everything.\n")
   await project.seed("zz-last.md", "# Last\n\nSorts after everything.\n")
@@ -51,7 +51,7 @@ test("a project loads as a SyncMeta count followed by WriteFile commands sorted 
   await expect(page.getByText("Zz-Last", { exact: true }).first()).toBeVisible()
 })
 
-test("boot holds the loading gate until settings and preferences exist", { tag: ["@Y5"] }, async ({ page, project }) => {
+test("boot holds the loading gate until settings and preferences exist", { tag: ["@stack"] }, async ({ page, project }) => {
   const required = ["settings.hidden.md", "preferences.md"]
   const held: string[] = []
   let gate: WebSocketRoute | null = null

@@ -14,7 +14,7 @@ interface OrphanWarning {
   args: unknown[]
 }
 
-test("boot resolves out-of-order references and audits only the genuinely dangling", { tag: ["@Y7"] }, async ({ page, project }) => {
+test("boot resolves out-of-order references and audits only the genuinely dangling", { tag: ["@stack"] }, async ({ page, project }) => {
   const warnings: OrphanWarning[] = []
   page.on("console", (msg) => {
     if (!msg.text().includes("[refs] orphaned at boot")) return
@@ -44,7 +44,7 @@ test("boot resolves out-of-order references and audits only the genuinely dangli
   expect(flat).not.toContain("code-9def1234")
 })
 
-test("mid-session references are marked pending, resolve on arrival, and markers never reach server or disk", { tag: ["@Y7"] }, async ({ page, project }) => {
+test("mid-session references are marked pending, resolve on arrival, and markers never reach server or disk", { tag: ["@stack"] }, async ({ page, project }) => {
   const ws = await interceptWs(page)
   await project.open(page)
   const commands = await captureCommands(page, project.id)

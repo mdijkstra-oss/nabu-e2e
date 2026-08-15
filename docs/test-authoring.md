@@ -1,12 +1,17 @@
-# Writing claim tests
+# Writing tests
 
 How to add tests to this suite. The spec behind it all is in
-`docs/specs/2026-08-08-01-claims-e2e-suite/`; the claims under test are in
-`../frontend-behavior-claims.md`.
+`docs/specs/2026-08-08-01-claims-e2e-suite/`.
+
+Before adding one, check it belongs at this tier: it must cross a boundary that
+cannot be faked without changing what is under test, be a journey someone
+performs rather than a variation on one, and be able to fail for a reason no
+in-process test could produce. `nabu-frontend/AGENTS.md` states the rule; a
+behavior that fails any part of it belongs in a unit test or a story.
 
 ## Layout
 
-- `tests/<section>/` — one folder per claims section (`documents/`, `projection/`,
+- `tests/<section>/` — one folder per area (`documents/`, `projection/`,
   `embeddings/`, `search/`, `grounded/`, `consensus/`, `agent-loop/`, `tools/`, `sync/`).
 - `fixtures/` — YAML replies for the fake model server. Read once at the fake's
   startup; run `scripts/reload-fixtures.sh` after changing them.
@@ -27,12 +32,13 @@ name, and variables (`scripts/compose.sh logs embeddings`, `... ps`).
 
 ## Tests
 
-Tag every test with its claim label(s); the tag is the whole claim-to-test mapping:
+Tag every test with its tier — `@stack`, `@stubbed` or `@real` — which is what
+selects it into a Playwright project:
 
 ```ts
 import { test, expect, nabuQuery } from "../helpers/fixtures"
 
-test("chart blocks store the query, not the numbers", { tag: ["@D3"] }, async ({ page, project }) => {
+test("chart blocks store the query, not the numbers", { tag: ["@stack"] }, async ({ page, project }) => {
   await project.seed("marker-doc.md", "# Chart\n\n...")
   await project.open(page)
   ...
@@ -48,14 +54,14 @@ The `project` fixture gives every test a fresh project seeded with
   exist and reads the file list once at connect.
 - `project.open(page)` — navigate and wait for the loading gate (chat textarea
   visible). Sets `skipCache: true` in the app's debug options first; pass
-  `{ skipCache: false }` only for the response-cache claim (S7).
+  `{ skipCache: false }` only for the response-cache test.
 - `project.journal()` — the fake's journal entries for this project only:
   `{seq, path, projectId, body, fixture}`. Assert only on your own project's
   entries; parallel workers share the fake.
 - `nabuQuery(page, sql)` — read-only SQL against the in-browser DuckDB
   (`window.__nabuTest`). Rejects with the database's own message on bad SQL.
 - `readVolumeFile(relPath)` / `listVolumeDir(relPath)` from `harness/volume` —
-  bytes on disk inside the storage volume (`<projectId>/<file>`), for claims
+  bytes on disk inside the storage volume (`<projectId>/<file>`), for tests
   about files on disk.
 
 UI entry points: chat is `textarea[name="chat-message"]`, Enter sends. The app
@@ -80,7 +86,7 @@ reply:                         # or `replies:` for an ordered list (last repeats
 Rules that keep parallel runs sane:
 
 - Match on a **unique marker string** you plant in the seeded document or chat
-  message, prefixed with your claim label (`E2E-D3-…`). Matching is stateless;
+  message, prefixed with the test's own name (`E2E-CHART-QUERY-…`). Matching is stateless;
   markers are what separate tests and turns.
 - More `contains` strings win over fewer on the same endpoint; an exact tie
   fails loud. Never rely on fixture file order.
@@ -105,11 +111,11 @@ Rules that keep parallel runs sane:
   starts, advance, assert. No real waiting.
 - The fake's `interEventMs`/`hold` control the stream side (L8 abort); that
   waits in real time, `page.clock` cannot move the network.
-- Websocket drops (Y4): `page.routeWebSocket` on `/api/ws/<projectId>`, pass
+- Websocket drops: `page.routeWebSocket` on `/api/ws/<projectId>`, pass
   traffic through, sever server-side; storage stays untouched.
 
-## The one partial claim
+## What this tier cannot see
 
-P1's "batched twenty files at a time" fragment has no observation channel here;
-it stays with the frontend unit suites and P1's checkbox records a partial
-verdict. Test the delete-plus-reinsert and debounce parts only.
+Sync batching — "twenty files at a time" — has no observation channel here. It
+stays with the frontend unit suites; the projection test covers the
+delete-plus-reinsert and the debounce only.

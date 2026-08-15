@@ -37,7 +37,7 @@ const D7_CODEBOOK = `\`\`\`json-callout
 
 test(
   "the same edit lands identically through the editor and through the agent",
-  { tag: ["@D4"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("d4-agent.md", D4_CONTENT)
     await project.seed("d4-user.md", D4_CONTENT)
@@ -78,7 +78,7 @@ test(
 
 test(
   "a write producing an invalid block throws before the store and corrupts nothing",
-  { tag: ["@D5"] },
+  { tag: ["@stack"] },
   async ({ page, project }) => {
     await project.seed("d5-doc.md", "# D5 doc\n\nSome D5 prose.\n")
     await openDocument(page, project, "d5-doc.md")
@@ -105,7 +105,7 @@ test(
 
 test(
   "changing an immutable field (id) is rejected and the block stays intact",
-  { tag: ["@D6"] },
+  { tag: ["@stack"] },
   async ({ page, project }) => {
     await project.seed("d6-doc.md", `# D6 doc\n\n${D6_CALLOUT}\n`)
     await openDocument(page, project, "d6-doc.md")
@@ -128,7 +128,7 @@ test(
 
 test(
   "a write naming an entity that exists nowhere in the corpus is refused",
-  { tag: ["@D7"] },
+  { tag: ["@stack"] },
   async ({ page, project }) => {
     await project.seed("d7-chart.md", `# D7 chart\n\n${D7_CHART}\n`)
     await project.seed("d7-codebook.md", `# D7 codebook\n\n${D7_CODEBOOK}\n`)
@@ -148,7 +148,7 @@ test(
 
 test(
   "a write referencing an entity defined in another file passes the corpus check",
-  { tag: ["@D7"] },
+  { tag: ["@stack"] },
   async ({ page, project }) => {
     await project.seed("d7-chart.md", `# D7 chart\n\n${D7_CHART}\n`)
     await project.seed("d7-codebook.md", `# D7 codebook\n\n${D7_CODEBOOK}\n`)

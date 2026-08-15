@@ -37,7 +37,7 @@ const S10_TARGET =
 
 test(
   "SEMANTIC() in SQL over files resolves to the matching chunk set, ordered by _semantic_score",
-  { tag: ["@S10"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("s10-target.md", S10_TARGET + "\n")
     await project.seed(
@@ -84,7 +84,7 @@ const S11_ECHO = "E2ESEARCHCORPUS E2ES11KW Her fixed walk and email curfew repla
 
 test(
   "EMBEDDINGS_FROM_FILE() makes the named file the query and finds what echoes it",
-  { tag: ["@S11"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("s11-note.md", S11_NOTE + "\n")
     await project.seed("s11-echo.md", S11_ECHO + "\n")
@@ -119,7 +119,7 @@ test(
 
 test(
   "semantic matching and structural filters on projected tables execute as one SQL statement",
-  { tag: ["@S12"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed(
       "s12-policy.md",

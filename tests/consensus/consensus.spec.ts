@@ -64,7 +64,7 @@ const C1_CODEBOOK = [
 
 test(
   "run takes framework, dimensions and target; candidates cascade per dimension, cut to the target",
-  { tag: ["@C1"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("c1-target.md", C1_DOC)
     await project.seed("c1-framework.md", C1_FRAMEWORK)
@@ -131,7 +131,7 @@ const C2_CODEBOOK = [
 
 test(
   "spans are judged in context, ~20 per call, at most 3 dimensions mixed",
-  { tag: ["@C2"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("c2-notes.md", C2_DOC)
     await project.seed("c2-codebook.md", C2_CODEBOOK)
@@ -190,7 +190,7 @@ const C3_CODEBOOK = [
 
 test(
   "voter agreement is the verdict; disagreement escalates to an adjudicator that sees both reasons",
-  { tag: ["@C3"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("c3-visits.md", C3_DOC)
     await project.seed("c3-codebook.md", C3_CODEBOOK)
@@ -246,7 +246,7 @@ const C4_CODEBOOK = [
 
 test(
   "adjudicator outcomes: reject drops, keep clears the objection, inconsistent keeps it as a flag",
-  { tag: ["@C4"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("c4-remarks.md", C4_DOC)
     await project.seed("c4-codebook.md", C4_CODEBOOK)
@@ -291,7 +291,7 @@ const C5_CODEBOOK = [
 
 test(
   "a surviving span is written back as an annotation carrying the keeper's reason",
-  { tag: ["@C5"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("c5-diary.md", C5_DOC)
     await project.seed("c5-codebook.md", C5_CODEBOOK)
@@ -332,7 +332,7 @@ const C6_CODEBOOK = [
 
 test(
   "a finished run reports per dimension how often each slot voted keep and how many contested spans ended flagged",
-  { tag: ["@C6"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     const consoleLines: string[] = []
     page.on("console", (msg) => consoleLines.push(msg.text()))
@@ -385,7 +385,7 @@ const C7_CODEBOOK = [
 
 test(
   "a failed retrieval branch is reported as an error alongside results, not a failed run",
-  { tag: ["@C7"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("c7-trail.md", C7_DOC)
     await project.seed("c7-codebook.md", C7_CODEBOOK)

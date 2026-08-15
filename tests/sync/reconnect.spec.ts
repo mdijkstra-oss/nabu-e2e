@@ -13,7 +13,7 @@ declare global {
 // can be measured instead of stepped around.
 const CEILINGS = [1_000, 2_000, 4_000, 8_000, 16_000, 30_000]
 
-test("a dropped websocket reconnects with capped exponential backoff while editing continues", { tag: ["@Y4"] }, async ({ page, project }) => {
+test("a dropped websocket reconnects with capped exponential backoff while editing continues", { tag: ["@stack"] }, async ({ page, project }) => {
   const ws = await interceptWs(page)
 
   let framesReceived = 0

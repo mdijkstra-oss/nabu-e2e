@@ -27,7 +27,7 @@ const s9FilterCount = async (project: { journal: () => Promise<{ path: string; b
 
 test(
   "disabling the filter stage at runtime shows the raw fused candidates; stages toggle individually",
-  { tag: ["@S9"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("s9-doc.md", DOC + "\n")
     await project.seed(
@@ -81,7 +81,7 @@ const capSentence = (i: number): string =>
 
 test(
   "every stage after probe can be turned off individually, the per-file cap included",
-  { tag: ["@S9"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     const sentences: string[] = []
     for (let i = 1; i <= 240; i++) sentences.push(capSentence(i))

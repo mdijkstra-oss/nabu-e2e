@@ -19,7 +19,7 @@ const reasonsFor = async (page: import("@playwright/test").Page, file: string): 
 
 test(
   "a block change replaces the file's rows (delete + reinsert), after a debounce",
-  { tag: ["@P1"] },
+  { tag: ["@stack"] },
   async ({ page, project }) => {
     await project.seed("p1-doc.md", seedAnnotationsDoc(P1_PROSE, p1Annotations))
     await openDocument(page, project, "p1-doc.md")
@@ -83,7 +83,7 @@ const p3Annotations = [
 
 test(
   "projected tables are named after the block language, with tableName and rowPath honored",
-  { tag: ["@P2"] },
+  { tag: ["@stack"] },
   async ({ page, project }) => {
     await project.seed(
       "p2-doc.md",
@@ -132,7 +132,7 @@ test(
 
 test(
   "scalars, nested objects and arrays project per the documented type mapping",
-  { tag: ["@P3"] },
+  { tag: ["@stack"] },
   async ({ page, project }) => {
     await project.seed(
       "p3-doc.md",

@@ -11,7 +11,7 @@ import {
 // debounce, so every keystroke below is followed by runFor(200) before the
 // 500ms persist debounce is reasoned about.
 
-test("a typing burst persists as one whole-file write per path, paths independent", { tag: ["@Y2"] }, async ({ page, project }) => {
+test("a typing burst persists as one whole-file write per path, paths independent", { tag: ["@stack"] }, async ({ page, project }) => {
   await project.open(page)
   await drainBootWrites(page)
 
@@ -51,7 +51,7 @@ test("a typing burst persists as one whole-file write per path, paths independen
   expect(writesTo(commands, "interview-anna.md")).toHaveLength(1)
 })
 
-test("a rename inside the debounce window cancels the pending write instead of racing it", { tag: ["@Y3"] }, async ({ page, project }) => {
+test("a rename inside the debounce window cancels the pending write instead of racing it", { tag: ["@stack"] }, async ({ page, project }) => {
   await project.open(page)
   await drainBootWrites(page)
 

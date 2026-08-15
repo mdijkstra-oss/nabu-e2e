@@ -17,7 +17,7 @@ const MUTATING_FILE_TOOLS = ["edit_file", "create_file", "copy_file", "rename_fi
 const isMutatingTool = (name: string): boolean =>
   MUTATING_PREFIXES.some((p) => name.startsWith(p)) || MUTATING_FILE_TOOLS.includes(name)
 
-test("state derives from the transcript; replaying the chain reproduces the mode", { tag: ["@L1"] }, async ({ page, project }) => {
+test("state derives from the transcript; replaying the chain reproduces the mode", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Question one E2E-L1-CHAIN")
@@ -44,7 +44,7 @@ test("state derives from the transcript; replaying the chain reproduces the mode
   expect(secondText).toContain("Question two E2E-L1-CHAIN-SECOND")
 })
 
-test("chat mode can read, search, query, edit, start planning; cancel returns to chat", { tag: ["@L2"] }, async ({ page, project }) => {
+test("chat mode can read, search, query, edit, start planning; cancel returns to chat", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Please plan this E2E-L2-MODE")
@@ -80,7 +80,7 @@ test("chat mode can read, search, query, edit, start planning; cancel returns to
   expect(cancelOut?.output).toContain("Cancelled: E2E-L2 cancel back to chat")
 })
 
-test("plan mode carries no mutating tools; submit_plan switches to exec", { tag: ["@L3"] }, async ({ page, project }) => {
+test("plan mode carries no mutating tools; submit_plan switches to exec", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Please plan this E2E-L3-PLANTOOLS")
@@ -99,7 +99,7 @@ test("plan mode carries no mutating tools; submit_plan switches to exec", { tag:
   expect(execReq!.seq).toBeGreaterThan(planReq!.seq)
 })
 
-test("exec mode has everything chat has except start_planning, plus complete_step", { tag: ["@L4"] }, async ({ page, project }) => {
+test("exec mode has everything chat has except start_planning, plus complete_step", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Please execute this E2E-L4A-TOOLS")
@@ -120,7 +120,7 @@ test("exec mode has everything chat has except start_planning, plus complete_ste
   expect(missingFromExec, "only start_planning is withheld in exec").toEqual(["start_planning"])
 })
 
-test("completing the last step retires the plan and falls back to chat", { tag: ["@L4"] }, async ({ page, project }) => {
+test("completing the last step retires the plan and falls back to chat", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Please execute this E2E-L4B-RETIRE")
@@ -140,7 +140,7 @@ test("completing the last step retires the plan and falls back to chat", { tag: 
   expect(entries.filter((e) => e.seq > final.seq && e.path !== "/qual-coder")).toEqual([])
 })
 
-test("wrong-mode tools and unknown tools get distinct errors", { tag: ["@L5"] }, async ({ page, project }) => {
+test("wrong-mode tools and unknown tools get distinct errors", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Please plan this E2E-L5-ERRORS")
@@ -170,7 +170,7 @@ test("wrong-mode tools and unknown tools get distinct errors", { tag: ["@L5"] },
   )
 })
 
-test("dead entity ids reject the message and re-ask the model", { tag: ["@L6"] }, async ({ page, project }) => {
+test("dead entity ids reject the message and re-ask the model", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Summarize E2E-L6-REJECT")
@@ -185,7 +185,7 @@ test("dead entity ids reject the message and re-ask the model", { tag: ["@L6"] }
   expect(reask).toContain("DO NOT restate")
 })
 
-test("rejections cap at three, then the answer is let through and flagged", { tag: ["@L6"] }, async ({ page, project }) => {
+test("rejections cap at three, then the answer is let through and flagged", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Summarize E2E-L6-CAP")
@@ -199,7 +199,7 @@ test("rejections cap at three, then the answer is let through and flagged", { ta
   await expect(page.getByText("references entities that do not exist")).toBeVisible()
 })
 
-test("complete_step out of order is rejected against the derived plan state", { tag: ["@L7"] }, async ({ page, project }) => {
+test("complete_step out of order is rejected against the derived plan state", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Please run the plan E2E-L7-GUARD")
@@ -221,7 +221,7 @@ test("complete_step out of order is rejected against the derived plan state", { 
   )
 })
 
-test("aborting mid-stream keeps completed blocks and resumes on the next message", { tag: ["@L8"] }, async ({ page, project }) => {
+test("aborting mid-stream keeps completed blocks and resumes on the next message", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Warm up E2E-L8-ABORT")
@@ -255,7 +255,7 @@ test("aborting mid-stream keeps completed blocks and resumes on the next message
   expect(text).not.toContain("L8-SECOND-STREAM")
 })
 
-test("shell-error nudge fires that turn; with nothing to say and no tool call the run ends", { tag: ["@L9"] }, async ({ page, project }) => {
+test("shell-error nudge fires that turn; with nothing to say and no tool call the run ends", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Try a write E2E-L9-NUDGE")

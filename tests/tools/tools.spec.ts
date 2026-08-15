@@ -45,7 +45,7 @@ Some prose around the block.
 \`\`\`
 `
 
-test("run_local_shell covers the read commands with pipes, chaining and quoting", { tag: ["@T1"] }, async ({ page, project }) => {
+test("run_local_shell covers the read commands with pipes, chaining and quoting", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Read the corpus E2E-T1-SHELL")
@@ -101,7 +101,7 @@ test("run_local_shell covers the read commands with pipes, chaining and quoting"
   expect(cmds[13].stdout.trim()).toMatch(/^\d+$/)
 })
 
-test("redirects, substitution and builtins are rejected by name; writes are impossible", { tag: ["@T2"] }, async ({ page, project }) => {
+test("redirects, substitution and builtins are rejected by name; writes are impossible", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Try to write E2E-T2-NOBASH")
@@ -127,7 +127,7 @@ test("redirects, substitution and builtins are rejected by name; writes are impo
   expect(check[1].stderr).toContain("t2-evil.txt: No such file")
 })
 
-test("block edits go through generated typed tools taking field operations", { tag: ["@T3"] }, async ({ page, project }) => {
+test("block edits go through generated typed tools taking field operations", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.seed("t3-doc.md", calloutDoc("callout-3t3aaaaa", "T3 Original Title"))
   await project.open(page)
 
@@ -169,7 +169,7 @@ test("block edits go through generated typed tools taking field operations", { t
     .toBe("T3 Patched Title")
 })
 
-test("a mutating tool result reports what actually changed, not an echo of the request", { tag: ["@T4"] }, async ({ page, project }) => {
+test("a mutating tool result reports what actually changed, not an echo of the request", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.seed("t4-doc.md", calloutDoc("callout-4t4aaaaa", "T4 Original Title"))
   await project.open(page)
 
@@ -189,7 +189,7 @@ test("a mutating tool result reports what actually changed, not an echo of the r
   expect(output).not.toContain("T4 Replaced Title")
 })
 
-test("fuzzy fields anchor to document prose; edits are anchored, not line-numbered", { tag: ["@T5"] }, async ({ page, project }) => {
+test("fuzzy fields anchor to document prose; edits are anchored, not line-numbered", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.seed(
     "t5-doc.md",
     "# T5 Doc\n\nAnna values the freedom to arrange her own schedule, and she guards it fiercely.\n"
@@ -225,7 +225,7 @@ test("fuzzy fields anchor to document prose; edits are anchored, not line-number
   expect(check[0].stdout.trim()).toMatch(/(^|:)1$/)
 })
 
-test("file operations work; hidden files refuse except settings; generated files redirect", { tag: ["@T6"] }, async ({ page, project }) => {
+test("file operations work; hidden files refuse except settings; generated files redirect", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.seed("t6-doc.md", calloutDoc("callout-6t6aaaaa", "T6 Original"))
   await project.open(page)
 
@@ -274,7 +274,7 @@ test("file operations work; hidden files refuse except settings; generated files
     .toBe("T6-REDIRECT-TITLE")
 })
 
-test("query runs SQL on projected tables and search returns readable file paths", { tag: ["@T7"] }, async ({ page, project }) => {
+test("query runs SQL on projected tables and search returns readable file paths", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.seed("t7-doc.md", calloutDoc("callout-7t7aaaaa", "T7"))
   await project.open(page)
 
@@ -300,7 +300,7 @@ test("query runs SQL on projected tables and search returns readable file paths"
   expect(read[0].stdout).toContain("# T7 Doc")
 })
 
-test("ask puts the question to the user and suspends until answered", { tag: ["@T8"] }, async ({ page, project }) => {
+test("ask puts the question to the user and suspends until answered", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Ask me something E2E-T8-ASK")
@@ -326,7 +326,7 @@ test("ask puts the question to the user and suspends until answered", { tag: ["@
   expect(askOut?.output).toContain("T8-EXPECTED-ALPHA path taken")
 })
 
-test("arguments failing the Zod schema never reach the handler", { tag: ["@T9"] }, async ({ page, project }) => {
+test("arguments failing the Zod schema never reach the handler", { tag: ["@stubbed"] }, async ({ page, project }) => {
   await project.open(page)
 
   await sendChat(page, "Send broken calls E2E-T9-ZOD")

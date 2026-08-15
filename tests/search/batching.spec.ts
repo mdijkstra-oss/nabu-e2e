@@ -31,7 +31,7 @@ const fillers = [
 
 test(
   "verdict batches of ten are judged concurrently and surface per batch",
-  { tag: ["@S5"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     // BM25 length normalization ranks the ten short docs above the two long
     // ones, so the verdict batches split as batch1 = E2ES5BATCH1 docs and
@@ -91,7 +91,7 @@ test(
 
 test(
   "consecutive barren batches stop paging before the candidate pool is exhausted",
-  { tag: ["@S6"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     // 88 single-chunk docs -> 9 verdict batches. maxBarren = ceil(30/10) = 3
     // and concurrency is 5, so at most 5 + 2 batches can ever be judged.

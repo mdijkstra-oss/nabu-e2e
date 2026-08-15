@@ -20,7 +20,7 @@ const s7FilterCalls = (journal: { path: string; body: unknown }[]) =>
 
 test(
   "repeated search reuses cached verdicts; only changed content is re-judged",
-  { tag: ["@S7"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("s7-alpha.md", ALPHA + "\n")
     await project.seed("s7-beta.md", BETA + "\n")

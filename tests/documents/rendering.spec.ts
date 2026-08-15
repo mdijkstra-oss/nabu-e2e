@@ -41,7 +41,7 @@ const D3_CHART_BLOCK = `\`\`\`json-chart
 
 test(
   "a project is markdown files opened in a block-based WYSIWYG editor",
-  { tag: ["@D1"] },
+  { tag: ["@stack"] },
   async ({ page, project }) => {
     await openDocument(page, project, "interview-anna.md")
 
@@ -64,7 +64,7 @@ test(
 
 test(
   "registered JSON blocks render as their visual form, not raw JSON",
-  { tag: ["@D2"] },
+  { tag: ["@stack"] },
   async ({ page, project }) => {
     await project.seed(
       "d2-blocks.md",
@@ -96,7 +96,7 @@ test(
 
 test(
   "chart blocks store the query, so a corpus change redraws the figure without editing the block",
-  { tag: ["@D3"] },
+  { tag: ["@stack"] },
   async ({ page, project }) => {
     await project.seed("d3-chart.md", `# D3 chart doc\n\n${D3_CHART_BLOCK}\n`)
     await project.seed(

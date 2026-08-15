@@ -16,7 +16,7 @@ const capSentence = (i: number): string =>
 
 test(
   "the per-file cap stops one document from crowding the judged results",
-  { tag: ["@S4"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     const sentences: string[] = []
     for (let i = 1; i <= 120; i++) sentences.push(capSentence(i))
@@ -62,7 +62,7 @@ const mergeSentence = (i: number, marker: string): string =>
 
 test(
   "adjacent high-scoring chunks merge and re-slice so passages cross chunk boundaries whole",
-  { tag: ["@S4"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     // ~1360 chars -> two chunks, the second starting inside the first because of the
     // overlap. Sentence 12 opens that shared stretch, so naive concatenation would repeat
@@ -121,7 +121,7 @@ const DROP_DOC =
 
 test(
   "scout then semantic filter judge candidates; trim cuts hits to the returned sentence ranges",
-  { tag: ["@S4"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("s4-codebook.md", "E2ES4FRAME Codebook: include only passages describing concrete adaptation tactics.\n")
     await project.seed("s4-keep.md", KEEP_DOC + "\n")
@@ -193,7 +193,7 @@ const ANNOTATION_BLOCK =
 
 test(
   "extend appends overlapping annotations to a hit and grows its range to cover them",
-  { tag: ["@S4"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("s4-extend.md", EXTEND_DOC + ANNOTATION_BLOCK)
     await project.seed(

@@ -14,7 +14,7 @@ const spotlightSpan = (page: import("@playwright/test").Page) =>
 
 test(
   "an exact curly-quoted passage from the open document links, and clicking scrolls to and underlines it",
-  { tag: ["@G4"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("diary.md", DIARY_DOC)
     await project.open(page)
@@ -40,7 +40,7 @@ test(
 
 test(
   "a five-plus-token quote at the 90% in-order floor still links and underlines the source passage",
-  { tag: ["@G4"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("diary.md", DIARY_DOC)
     await project.open(page)
@@ -69,7 +69,7 @@ test(
 
 test(
   "a quote that matches nothing stays plain quoted text with no link",
-  { tag: ["@G5"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("diary.md", DIARY_DOC)
     await project.open(page)
@@ -85,7 +85,7 @@ test(
 
 test(
   "a quote survives extra whitespace, curly quotes, and dropped commas",
-  { tag: ["@G6"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("diary.md", DIARY_DOC)
     await project.open(page)
@@ -106,7 +106,7 @@ test(
 
 test(
   "a quote reflowed across a line break still resolves to a link",
-  { tag: ["@G6"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("diary.md", DIARY_DOC)
     await project.open(page)
@@ -122,7 +122,7 @@ test(
 
 test(
   "a quotation from a document other than the open one stays plain text",
-  { tag: ["@G7"] },
+  { tag: ["@stubbed"] },
   async ({ page, project }) => {
     await project.seed("diary.md", DIARY_DOC)
     await project.seed("other-notes.md", OTHER_NOTES_DOC)
